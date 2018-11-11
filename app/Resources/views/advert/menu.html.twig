@@ -1,0 +1,30 @@
+{# src/AB/PlatformBundle/Resources/views/Advert/menu.html.twig #}
+
+{# Ce template n'hérite de personne,
+   tout comme le template inclus avec {{ include() }}. #}
+<div class="menu">
+<h4><a href="{{ path('advert_index') }}">Accueil</a></h4>
+<h4>Les annonces</h4>
+<ul>
+  <li>Rechercher</li>
+  <li>Consulter les annonces</li>
+  <li><a href="{{ path('advert_new') }}">Ajouter une annonce</a></li>
+</ul>
+<h4>Mon compte</h4>
+<ul>
+  <li>Se connecter</li>
+  <li><a href="">Créer un compte</a> </li>
+  <li>Mon profil</li>
+  <li>Mes annonces</li>
+</ul>
+<h4>Dernières annonces</h4>
+<ul>
+  {% for advert in listAdverts %}
+    <li>
+      <a href="{{ path('advert_show', {'id': advert.id}) }}">
+        {{ advert.title }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+</div>

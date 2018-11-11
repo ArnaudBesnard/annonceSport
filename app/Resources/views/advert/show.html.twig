@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h2>{{ advert.title }}</h2>
+  
+  
+<hr />
+{# On vérifie qu'une image soit bien associée à l'annonce #}
+    {#
+{% if advert.image is not null %}
+  <img src="{{ advert.image.url }}" alt="{{ advert.image.alt }}">
+{% endif %}
+#}
+  <div class="well">
+    {{ advert.content }}
+  </div>
+    <i>Prix : {{ advert.price }} €</i><hr />
+
+  <p>
+    <a href="{{ path('advert_index') }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour à la liste
+    </a>
+    <a href="{{ path('advert_edit', { 'id': advert.id }) }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-edit"></i>
+      Modifier l'annonce
+    </a>
+    {{ form_start(delete_form) }}
+                <input class="btn btn-danger" type="submit" value="Supprimer l'annonce">
+            {{ form_end(delete_form) }}
+  </p>
+
+
+{% endblock %}

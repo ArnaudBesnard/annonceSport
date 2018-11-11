@@ -1,0 +1,9 @@
+    <ul>
+        {% for category in listCategories %}
+            <li>
+                {{ category.category }}
+            </li>
+        {% else %}
+            <li>Pas (encore !) de catégorie</li>
+        {% endfor %}
+    </ul>

@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %} {% block body %}
+<h1>Editer une annonce</h1>
+
+{{ form_start(edit_form) }} {{ form_widget(edit_form) }}
+<input class="btn btn-primary" type="submit" value="Editer l'annonce" /> {{ form_end(edit_form) }}
+<br /> {{ form_start(delete_form) }}
+<input class="btn btn-danger" type="submit" value="Delete"> {{ form_end(delete_form) }}
+<br />
+<a href="{{ path('advert_index') }}">Retour à la liste</a> {% endblock %}

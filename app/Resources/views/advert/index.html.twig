@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+<h3>Les dernières annonces publiées</h3>
+<hr />
+    {% for advert in adverts %}
+        <div class="well">
+            <a href="{{ path('advert_show', { 'id': advert.id }) }}"><h5> {{ advert.title }} </h5></a>
+            annonce publiée par : {{ advert.author }} le {{ advert.postedAt|date('d/m/Y') }} à {{ advert.postedAt|date('H:i') }}
+        </div>
+<hr />
+    {% else %}
+        <li>Pas (encore !) d'annonces</li>
+    {% endfor %}
+
+    <ul>
+        <li>
+            <a href="{{ path('advert_new') }}">Ajouter une nouvelle annonce</a>
+        </li>
+    </ul>
+<hr />
+<h3>Les différentes catégories</h3>
+    {{ render(controller("AppBundle:Advert:viewCategories", {'limit': 5})) }}
+    <ul><li><a href="">Proposer une catégorie</a></li></ul>
+{% endblock %}

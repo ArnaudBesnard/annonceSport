@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Créer une nouvelle annonce</h1>
+<hr />
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input class="btn btn-primary" type="submit" value="Ajouter votre annonce" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('advert_index') }}">Retour à la liste</a>
+        </li>
+    </ul>
+{% endblock %}
