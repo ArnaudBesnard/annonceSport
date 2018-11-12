@@ -7,19 +7,18 @@
 <hr />
     {% for advert in adverts %}
         <div class="well">
+            {% if advert.id is not null %}
             <a href="{{ path('advert_show', { 'id': advert.id }) }}"><h5> {{ advert.title }} </h5></a>
-            annonce publiée par : {{ advert.author }} le {{ advert.postedAt|date('d/m/Y') }} à {{ advert.postedAt|date('H:i') }}
+                <div class="advert_author">annonce publiée par : {{ advert.author }} le {{ advert.postedAt|date('d/m/Y') }} à {{ advert.postedAt|date('H:i') }}</div>
+            {% else %}
+                Actuellement, il n'y a aucune annonce publiée!
+            {% endif %}
         </div>
 <hr />
     {% else %}
         <li>Pas (encore !) d'annonces</li>
     {% endfor %}
 
-    <ul>
-        <li>
-            <a href="{{ path('advert_new') }}">Ajouter une nouvelle annonce</a>
-        </li>
-    </ul>
 <hr />
 <h3>Les différentes catégories</h3>
     {{ render(controller("AppBundle:Advert:viewCategories", {'limit': 5})) }}

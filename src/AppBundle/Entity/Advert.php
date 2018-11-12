@@ -87,7 +87,12 @@ class Advert
      *
      * @ORM\Column(name="tel", type="string", length=255)
      */
-    private $tel;
+    private $tel = null;
+
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Image", cascade={"persist", "remove"})
+     */
+    private $image;
 
     /**
      * @var \DateTime
@@ -376,5 +381,29 @@ class Advert
     public function getTel()
     {
         return $this->tel;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \AppBundle\Entity\Image $image
+     *
+     * @return Advert
+     */
+    public function setImage(\AppBundle\Entity\Image $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \AppBundle\Entity\Image
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

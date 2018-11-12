@@ -21,24 +21,30 @@ class AdvertType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('Category', EntityType::class, array(
-                    'label'=>'Catégorie de votre annonce',
-                    'class' => 'AppBundle:Categories',
-                    'choice_label' => 'category',
-                    ))
-                ->add('Title', TextType::class,array('label'=>'Titre de votre annonce'))
-                ->add('Content', TextareaType::class,array('label'=>'Votre annonce', 'attr' => array('rows' => 10)))
-                ->add('Price', TextType::class,array('label'=>'Prix en €'))
+        $builder->add('category', EntityType::class, array(
+                                        'class' => 'AppBundle:Categories',
+                                        'label' => 'Choisissez votre catégorie *',
+                                        'choice_label' => 'category',
+                     ))
+                ->add('Title', TextType::class,array('label'=>'Titre de votre annonce *'))
+                ->add('Content', TextareaType::class,array('label'=>'Votre annonce *', 'attr' => array('rows' => 10)))
+                ->add('Price', TextType::class,array('label'=>'Prix en € *'))
                 ->add('Department', ChoiceType::class, array(
-                                        'label'=>'Département',
+                                        'label'=>'Département *',
                                         'choices'  => array(
                                                 '56 - Morbihan' => '56 - Morbihan'
                                         ),
                     ))
-                ->add('City', TextType::class,array('label'=>'Ville'))
-                ->add('Author',    TextType::class,array('label'=>'Nom'))
-                ->add('Email', EmailType::class,array('label'=>'Email'))
-                ->add('Tel', TextType::class,array('label'=>'Votre téléphone'));
+                ->add('City', TextType::class,array('label'=>'Ville *'))
+                ->add('Author',    TextType::class,array('label'=>'Nom ou pseudo * '))
+                ->add('Email', EmailType::class,array('label'=>'Email *'))
+                ->add('Tel', TextType::class,array(
+                    'required' => false,
+                    'label'=>'Votre téléphone'))
+                ->add('image',     ImageType::class, array(
+                    'label' => 'Ajouter une image',
+                    'required' => false
+                ));
 
     }
     

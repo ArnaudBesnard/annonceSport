@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Categories
 {
+
     /**
      * @var int
      *
@@ -59,6 +60,11 @@ class Categories
      * @return string
      */
     public function getCategory()
+    {
+        return $this->category;
+    }
+
+    public function __toString()
     {
         return $this->category;
     }

@@ -24,3 +24,15 @@ container{
     padding: 10px;
     border: 1px solid gray;
 }
+.advert_img{
+    width:550px;
+    /*height:100%;*/
+}
+.advert_author{
+    font-size: 12px;
+}
+.advert_price{
+    font-size: 18px;
+    font-weight: bold;
+    color: red;
+}

@@ -25,10 +25,10 @@ class AdvertController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $adverts = $em->getRepository('AppBundle:Advert')->findAll();
-
         return $this->render('advert/index.html.twig', array(
             'adverts' => $adverts,
         ));
+
     }
 
     /**
@@ -44,6 +44,7 @@ class AdvertController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            //$advert->getImage()->upload();
             $em = $this->getDoctrine()->getManager();
             $em->persist($advert);
             $em->flush();
@@ -88,7 +89,7 @@ class AdvertController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('advert_edit', array('id' => $advert->getId()));
+            return $this->redirectToRoute('advert_show', array('id' => $advert->getId()));
         }
 
         return $this->render('advert/edit.html.twig', array(

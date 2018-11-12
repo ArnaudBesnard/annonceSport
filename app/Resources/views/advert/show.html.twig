@@ -3,19 +3,30 @@
 {% block body %}
 
 <h2>{{ advert.title }}</h2>
-  
-  
+  <div class="advert_author">Postée par : {{ advert.author }} dans la Catégorie : {{ advert.category }}</div>
 <hr />
 {# On vérifie qu'une image soit bien associée à l'annonce #}
-    {#
 {% if advert.image is not null %}
-  <img src="{{ advert.image.url }}" alt="{{ advert.image.alt }}">
+  <img class="advert_img" src="{{ asset(advert.image.webPath) }}" alt="{{ advert.image.alt }}">
 {% endif %}
-#}
+
   <div class="well">
+    <br />
+    <div class="advert_price">Prix : {{ advert.price }} €</div>
+    <hr />
+    <h4>Descriptif de l'annonce</h4>
     {{ advert.content }}
   </div>
-    <i>Prix : {{ advert.price }} €</i><hr />
+    <hr />
+    <div class="well">
+      <h4>Contacter le vendeur</h4>
+      <b>Département :</b> {{ advert.department }}<br />
+      <b>Ville :</b> {{ advert.city }}<br />
+      <b>Adresse email :</b> {{ advert.email }}<br />
+        {% if advert.tel is not null %}
+      <b>Téléphone:</b> {{ advert.tel }}
+        {% endif %}
+    </div>
 
   <p>
     <a href="{{ path('advert_index') }}" class="btn btn-default">
