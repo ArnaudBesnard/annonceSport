@@ -43,7 +43,12 @@ class AdvertController extends Controller
      */
     public function showAllAction(Request $request){
         $em = $this->getDoctrine()->getManager();
-        $adverts = $em->getRepository('AppBundle:Advert')->findAll();
+        $adverts = $em->getRepository('AppBundle:Advert')->findBy(
+            array('published' => 1), // Critere
+            array('postedAt' => 'desc'),        // Tri
+            null,                              // Limite
+            0                               // Offset
+        );
         $advert  = $this->get('knp_paginator')->paginate(
             $adverts,
             $request->query->get('page', 1)/*le numéro de la page à afficher*/, 4/*nbre d'éléments par page*/
