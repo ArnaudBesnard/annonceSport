@@ -3,7 +3,7 @@
 {% block body %}
 <h2>Les annonces publiées sur le site</h2>
     <hr />
-    {% for advert in adverts %}
+    {% for advert in advert %}
         <div class="well">
             <div class="advert_container">
                 <div class="advert_column">
@@ -28,5 +28,5 @@
     {% else %}
         <li>Pas (encore !) d'annonces</li>
     {% endfor %}
-
+    <div class="center">{{ knp_pagination_render(advert) }}</div>
 {% endblock %}
