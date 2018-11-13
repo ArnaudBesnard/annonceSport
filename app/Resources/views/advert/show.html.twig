@@ -3,7 +3,7 @@
 {% block body %}
 
 <h2>{{ advert.title }}</h2>
-  <div class="advert_author">Postée par : {{ advert.author }} dans la Catégorie : {{ advert.category }}</div>
+  <div class="advert_author">Proposé par : {{ advert.author }} dans la Catégorie : {{ advert.category }}</div>
 <hr />
 {# On vérifie qu'une image soit bien associée à l'annonce #}
 {% if advert.image is not null %}

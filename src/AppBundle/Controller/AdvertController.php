@@ -23,12 +23,35 @@ class AdvertController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-        $adverts = $em->getRepository('AppBundle:Advert')->findAll();
+        $adverts = $em->getRepository('AppBundle:Advert')->findBy(
+            array('published' => 1), // Critere
+            array('postedAt' => 'desc'),        // Tri
+            6,                              // Limite
+            0                               // Offset
+        );
         return $this->render('advert/index.html.twig', array(
             'adverts' => $adverts,
         ));
 
+    }
+
+    /**
+     * Lists all advert entities.
+     *
+     * @Route("/showAll", name="advert_showAll")
+     * @Method("GET")
+     */
+    public function showAllAction(){
+        $em = $this->getDoctrine()->getManager();
+        $adverts = $em->getRepository('AppBundle:Advert')->findBy(
+            array('published' => 1), // Critere
+            array('postedAt' => 'desc'),        // Tri
+            null,                              // Limite
+            0                               // Offset
+        );
+        return $this->render('advert/showAll.html.twig', array(
+            'adverts' => $adverts,
+        ));
     }
 
     /**
@@ -44,7 +67,6 @@ class AdvertController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            //$advert->getImage()->upload();
             $em = $this->getDoctrine()->getManager();
             $em->persist($advert);
             $em->flush();

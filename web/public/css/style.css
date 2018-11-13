@@ -28,11 +28,36 @@ container{
     width:550px;
     /*height:100%;*/
 }
-.advert_author{
+.advert_infos{
     font-size: 12px;
 }
 .advert_price{
     font-size: 18px;
     font-weight: bold;
     color: red;
+}
+.advert_display{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    width: 100%;
+    margin: 0 auto;
+}
+.advert_display_img{
+    height:150px;
+    width: 250px;
+}
+.advert_container{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+}
+.advert_column{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    max-width: 600px;
+    padding-left: 15px;
+    text-align: justify;
 }
