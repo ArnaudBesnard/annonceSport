@@ -21,6 +21,13 @@ class AdvertType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        //Récupération de l'api geo.api.gouv.fr pour la liste des Departements
+        $dpt = [];
+        $json_source = file_get_contents('https://geo.api.gouv.fr/departements');
+        $json_data = json_decode($json_source);
+        foreach($json_data as $v){
+            $dpt[$v->code." - ".$v->nom] = $v->nom;
+        };
         $builder->add('category', EntityType::class, array(
                                         'class' => 'AppBundle:Categories',
                                         'label' => 'Choisissez votre catégorie *',
@@ -31,9 +38,7 @@ class AdvertType extends AbstractType
                 ->add('Price', TextType::class,array('label'=>'Prix en € *'))
                 ->add('Department', ChoiceType::class, array(
                                         'label'=>'Département *',
-                                        'choices'  => array(
-                                                '56 - Morbihan' => '56 - Morbihan'
-                                        ),
+                                        'choices'  => $dpt
                     ))
                 ->add('City', TextType::class,array('label'=>'Ville *'))
                 ->add('Author',    TextType::class,array('label'=>'Nom ou pseudo * '))
@@ -45,7 +50,6 @@ class AdvertType extends AbstractType
                     'label' => 'Ajouter une image',
                     'required' => false
                 ));
-
     }
     
     /**

@@ -135,13 +135,11 @@ class AdvertController extends Controller
     {
         $form = $this->createDeleteForm($advert);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($advert);
             $em->flush();
         }
-
         return $this->redirectToRoute('advert_index');
     }
 
