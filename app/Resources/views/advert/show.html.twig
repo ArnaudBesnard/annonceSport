@@ -8,6 +8,8 @@
 {# On vérifie qu'une image soit bien associée à l'annonce #}
 {% if advert.image is not null %}
   <img class="advert_img" src="{{ asset(advert.image.webPath) }}" alt="{{ advert.image.alt }}">
+    {% else %}
+      <img class="advert_display_img" src="{{ asset('public/images/aucune.jpg') }}" alt="Aucune image">
 {% endif %}
 
   <div class="well">

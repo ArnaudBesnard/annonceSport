@@ -46,7 +46,7 @@ class AdvertType extends AbstractType
                 ->add('Tel', TextType::class,array(
                     'required' => false,
                     'label'=>'Votre téléphone'))
-                ->add('image',     ImageType::class, array(
+                ->add('image',   ImageType::class, array(
                     'label' => 'Ajouter une image',
                     'required' => false
                 ));
