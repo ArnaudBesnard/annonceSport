@@ -5,7 +5,10 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Advert;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
  * Advert controller.
@@ -42,6 +45,7 @@ class AdvertController extends Controller
      * @Method("GET")
      */
     public function showAllAction(Request $request){
+
         $em = $this->getDoctrine()->getManager();
         $adverts = $em->getRepository('AppBundle:Advert')->findBy(
             array('published' => 1), // Critere
@@ -55,6 +59,26 @@ class AdvertController extends Controller
         );
         return $this->render('advert/showAll.html.twig', array(
             'advert' => $advert,
+        ));
+    }
+
+    /**
+     * Search
+     *
+     * @Route("/search", name="advert_search")
+     *
+     */
+    public function searchAction(){
+        $em = $this->getDoctrine()->getManager();
+        $advert = new Advert();
+        $form = $this->createFormBuilder($advert)
+            ->add('Title', TextType::class)
+            ->add('Category', TextType::class)
+            ->add('save', SubmitType::class, array('label' => 'Create Task'))
+            ->getForm();
+        
+        return $this->render('advert/search.html.twig', array(
+            'form' => $form->createView(),
         ));
     }
 
@@ -143,13 +167,6 @@ class AdvertController extends Controller
         return $this->redirectToRoute('advert_index');
     }
 
-    /**
-     * Creates a form to delete a advert entity.
-     *
-     * @param Advert $advert The advert entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
     private function createDeleteForm(Advert $advert)
     {
         return $this->createFormBuilder()
@@ -158,9 +175,8 @@ class AdvertController extends Controller
             ->getForm()
         ;
     }
+
     /**
-     * 
-     *
      * @Route("/menu", name="advert_menu")
      * @Method("GET")
      */
@@ -184,9 +200,7 @@ class AdvertController extends Controller
     ));
     }
   }
-        /**
-     * 
-     *
+     /**
      * @Route("/categories", name="advert_categories")
      * @Method("GET")
      */

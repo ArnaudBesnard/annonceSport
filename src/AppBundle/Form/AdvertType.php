@@ -21,10 +21,12 @@ class AdvertType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        //Récupération de l'api geo.api.gouv.fr pour la liste des Departements
+        if (empty($dpt)) {
         $dpt = [];
+        //Récupération de l'api geo.api.gouv.fr pour la liste des Departements
         $json_source = file_get_contents('https://geo.api.gouv.fr/departements');
         $json_data = json_decode($json_source);
+        }
         foreach($json_data as $v){
             $dpt[$v->code." - ".$v->nom] = $v->nom;
         };
