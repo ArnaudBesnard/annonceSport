@@ -3,11 +3,6 @@
 {% block body %}
 <h2>Les annonces publiées sur le site</h2>
     <hr />
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <input class="btn btn-primary" type="submit" value="Afficher" />
-    {{ form_end(form) }}
-    <hr />
     {% for advert in advert %}
         <div class="well">
             <div class="advert_container">

@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Advert controller.
@@ -46,29 +47,6 @@ class AdvertController extends Controller
      */
     public function showAllAction(Request $request){
 
-        $form = $this->createForm('AppBundle\Form\SearchType');
-        $form->handleRequest($request);
-        $cat = $form['category']->getData();
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $adverts = $em->getRepository('AppBundle:Advert')->findBy(
-                array('category' => $cat), // Critere
-                array('postedAt' => 'desc'),        // Tri
-                null,                          // Limite
-                0                             // Offset
-            );
-
-            $advert = $this->get('knp_paginator')->paginate(
-                $adverts,
-                $request->query->get('page', 1)/*le numéro de la page à afficher*/, 4/*nbre d'éléments par page*/
-            );
-
-            return $this->render('advert/showAll.html.twig', array(
-                'advert' => $advert,
-                'form' => $form->createView(),
-            ));
-        }
         $em = $this->getDoctrine()->getManager();
         $adverts = $em->getRepository('AppBundle:Advert')->findBy(
             array('published' => 1), // Critere
@@ -84,7 +62,7 @@ class AdvertController extends Controller
 
         return $this->render('advert/showAll.html.twig', array(
             'advert' => $advert,
-            'form' => $form->createView(),
+
         ));
     }
 
@@ -98,10 +76,23 @@ class AdvertController extends Controller
 
         $form = $this->createForm('AppBundle\Form\SearchType');
         $form->handleRequest($request);
-
-        return $this->render('advert/search.html.twig', array(
-            'form' => $form->createView(),
-        ));
+        $cat = $form['category']->getData();
+        
+            $em = $this->getDoctrine()->getManager();
+            $adverts = $em->getRepository('AppBundle:Advert')->findBy(
+                array('category' => $cat), // Critere
+                array('postedAt' => 'desc'),        // Tri
+                null,                          // Limite
+                0                             // Offset
+            );
+            $advert = $this->get('knp_paginator')->paginate(
+                $adverts,
+                $request->query->get('page', 1)/*le numéro de la page à afficher*/, 4/*nbre d'éléments par page*/
+            );
+            return $this->render('advert/search.html.twig', array(
+                'advert' => $advert,
+                'form' => $form->createView(),
+            ));
     }
 
     /**

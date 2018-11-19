@@ -17,7 +17,7 @@ class SearchType extends AbstractType
     {
         $builder->add('category', EntityType::class, array(
             'class' => 'AppBundle:Categories',
-            'label' => 'Choisissez votre catégorie *',
+            'label' => 'Choisissez une catégorie',
             'choice_label' => 'category',
         ));
     }
