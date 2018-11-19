@@ -42,10 +42,33 @@ class AdvertController extends Controller
      * Lists all advert entities.
      *
      * @Route("/showAll", name="advert_showAll")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
     public function showAllAction(Request $request){
 
+        $form = $this->createForm('AppBundle\Form\SearchType');
+        $form->handleRequest($request);
+        $cat = $form['category']->getData();
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $adverts = $em->getRepository('AppBundle:Advert')->findBy(
+                array('category' => $cat), // Critere
+                array('postedAt' => 'desc'),        // Tri
+                null,                          // Limite
+                0                             // Offset
+            );
+
+            $advert = $this->get('knp_paginator')->paginate(
+                $adverts,
+                $request->query->get('page', 1)/*le numéro de la page à afficher*/, 4/*nbre d'éléments par page*/
+            );
+
+            return $this->render('advert/showAll.html.twig', array(
+                'advert' => $advert,
+                'form' => $form->createView(),
+            ));
+        }
         $em = $this->getDoctrine()->getManager();
         $adverts = $em->getRepository('AppBundle:Advert')->findBy(
             array('published' => 1), // Critere
@@ -53,12 +76,15 @@ class AdvertController extends Controller
             null,                              // Limite
             0                               // Offset
         );
-        $advert  = $this->get('knp_paginator')->paginate(
+
+        $advert = $this->get('knp_paginator')->paginate(
             $adverts,
             $request->query->get('page', 1)/*le numéro de la page à afficher*/, 4/*nbre d'éléments par page*/
         );
+
         return $this->render('advert/showAll.html.twig', array(
             'advert' => $advert,
+            'form' => $form->createView(),
         ));
     }
 
@@ -66,17 +92,13 @@ class AdvertController extends Controller
      * Search
      *
      * @Route("/search", name="advert_search")
-     *
+     * @Method({"GET", "POST"})
      */
-    public function searchAction(){
-        $em = $this->getDoctrine()->getManager();
-        $advert = new Advert();
-        $form = $this->createFormBuilder($advert)
-            ->add('Title', TextType::class)
-            ->add('Category', TextType::class)
-            ->add('save', SubmitType::class, array('label' => 'Create Task'))
-            ->getForm();
-        
+    public function searchAction(Request $request){
+
+        $form = $this->createForm('AppBundle\Form\SearchType');
+        $form->handleRequest($request);
+
         return $this->render('advert/search.html.twig', array(
             'form' => $form->createView(),
         ));

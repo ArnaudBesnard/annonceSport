@@ -25,11 +25,10 @@ class Advert
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
- 
-     /**
-     * @var string
-     *
-     * @ORM\Column(name="category", type="string", length=255)
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Categories", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
      */
     private $category;
 
@@ -87,7 +86,7 @@ class Advert
      *
      * @ORM\Column(name="tel", type="string", length=255)
      */
-    private $tel = null;
+    private $tel;
 
     /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Image", cascade={"persist", "remove"})
