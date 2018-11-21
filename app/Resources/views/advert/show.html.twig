@@ -26,10 +26,12 @@
       <b>Ville :</b> {{ advert.city }}<br />
       <b>Adresse email :</b> {{ advert.email }}<br />
         {% if advert.tel is not null %}
-      <b>Téléphone:</b> {{ advert.tel }}
+      <b>Téléphone :</b> {{ advert.tel }}
         {% endif %}
     </div>
-
+    <hr />
+    <h4>Localisation de l'objet :</h4>
+<div id="map"></div>
   <p>
     <a href="{{ path('advert_index') }}" class="btn btn-default">
       <i class="glyphicon glyphicon-chevron-left"></i>

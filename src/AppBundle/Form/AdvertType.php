@@ -23,12 +23,17 @@ class AdvertType extends AbstractType
     {
         if (empty($dpt)) {
         $dpt = [];
-        //Récupération de l'api geo.api.gouv.fr pour la liste des Departements
-        $json_source = file_get_contents('https://geo.api.gouv.fr/departements');
-        $json_data = json_decode($json_source);
+        $communes = [];
+        $json_dpt = file_get_contents('https://geo.api.gouv.fr/departements');
+        $json_communes = file_get_contents('https://geo.api.gouv.fr/departements/33/communes');
+        $json_data_dpt = json_decode($json_dpt);
+        $json_data_communes = json_decode($json_communes);
         }
-        foreach($json_data as $v){
+        foreach($json_data_dpt as $v){
             $dpt[$v->code." - ".$v->nom] = $v->nom;
+        };
+        foreach($json_data_communes as $vc){
+            $communes[$vc->nom] = $vc->nom;
         };
         $builder->add('category', EntityType::class, array(
                                         'class' => 'AppBundle:Categories',
@@ -42,7 +47,10 @@ class AdvertType extends AbstractType
                                         'label'=>'Département *',
                                         'choices'  => $dpt
                     ))
-                ->add('City', TextType::class,array('label'=>'Ville *'))
+            ->add('City', ChoiceType::class, array(
+                'label'=>'Ville *',
+                'choices'  => $communes
+            ))
                 ->add('Author',    TextType::class,array('label'=>'Nom ou pseudo * '))
                 ->add('Email', EmailType::class,array('label'=>'Email *'))
                 ->add('Tel', TextType::class,array(

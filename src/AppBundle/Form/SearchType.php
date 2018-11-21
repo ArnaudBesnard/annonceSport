@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class SearchType extends AbstractType
@@ -16,10 +17,10 @@ class SearchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('category', EntityType::class, array(
-            'class' => 'AppBundle:Categories',
-            'label' => 'Choisissez une catégorie',
-            'choice_label' => 'category',
-        ));
+                        'class' => 'AppBundle:Categories',
+                        'label' => 'Choisissez une catégorie',
+                        'choice_label' => 'category',
+                    ));
     }
 
     /**
