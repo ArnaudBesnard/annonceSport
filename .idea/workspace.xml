@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="07d5d861-4e7a-47b4-bbca-39e0a5ecb507" name="Default" comment="" />
+    <list default="true" id="07d5d861-4e7a-47b4-bbca-39e0a5ecb507" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/advert/advertsByCat.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/advert/categories.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/advert/categories.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/advert/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/advert/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/advert/showAll.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/advert/showAll.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/AdvertController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/AdvertController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/public/js/map.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/public/js/map.js" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,16 +26,7 @@
         <entry file="file://$PROJECT_DIR$/app/Resources/views/advert/showAll.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="3" column="56" selection-start-line="3" selection-start-column="56" selection-end-line="3" selection-end-column="56" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="advertsByCat.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/advert/advertsByCat.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="46" />
+              <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -35,7 +34,7 @@
       <file leaf-file-name="AdvertType.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/AdvertType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-706">
+            <state relative-caret-position="-152">
               <caret line="27" column="83" selection-start-line="27" selection-start-column="83" selection-end-line="27" selection-end-column="83" />
               <folding>
                 <element signature="e#34#74#0#PHP" expanded="true" />
@@ -48,7 +47,7 @@
         <entry file="file://$PROJECT_DIR$/web/public/js/map.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+              <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -62,11 +61,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdvertController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AdvertController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/AdvertController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="220" column="2" selection-start-line="220" selection-start-column="2" selection-end-line="220" selection-end-column="2" />
+            <state relative-caret-position="874">
+              <caret line="224" column="63" selection-start-line="224" selection-start-column="63" selection-end-line="224" selection-end-column="63" />
               <folding>
                 <element signature="e#38#66#0#PHP" expanded="true" />
               </folding>
@@ -74,11 +73,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="categories.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/advert/categories.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/advert/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="18" column="145" selection-start-line="18" selection-start-column="54" selection-end-line="18" selection-end-column="145" />
+            <state relative-caret-position="420">
+              <caret line="30" column="46" lean-forward="true" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="780">
+              <caret line="63" column="70" selection-start-line="63" selection-start-column="69" selection-end-line="63" selection-end-column="112" />
             </state>
           </provider>
         </entry>
@@ -128,16 +145,17 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Form/SearchType.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/web/public/js/main.js" />
-        <option value="$PROJECT_DIR$/web/public/js/map.js" />
         <option value="$PROJECT_DIR$/web/public/css/style.css" />
         <option value="$PROJECT_DIR$/src/AppBundle/Repository/AdvertRepository.php" />
-        <option value="$PROJECT_DIR$/app/Resources/views/advert/index.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/AdvertType.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/AdvertController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/advert/show.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/views/advert/showAll.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/advert/advertsByCat.html.twig" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/web/public/js/map.js" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/AdvertController.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/advert/showAll.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/advert/categories.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/advert/index.html.twig" />
       </list>
     </option>
   </component>
@@ -319,27 +337,28 @@
       <workItem from="1542217990641" duration="3948000" />
       <workItem from="1542297883917" duration="9906000" />
       <workItem from="1542385320034" duration="20700000" />
-      <workItem from="1542566819017" duration="59378000" />
+      <workItem from="1542566819017" duration="61720000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143525000" />
+    <option name="totallyTimeSpent" value="145867000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20574887" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32954547" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20574887" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32954547" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -348,7 +367,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -358,16 +376,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/AdvertType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
-          <folding>
-            <element signature="e#34#74#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/advert/new.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -641,13 +649,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/public/js/map.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Advert.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="166">
@@ -675,16 +676,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/AdvertType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-706">
-          <caret line="27" column="83" selection-start-line="27" selection-start-column="83" selection-end-line="27" selection-end-column="83" />
-          <folding>
-            <element signature="e#34#74#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/AdvertRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -692,24 +683,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/advert/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="18" column="145" selection-start-line="18" selection-start-column="54" selection-end-line="18" selection-end-column="145" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/advert/show.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="5" column="174" selection-start-line="5" selection-start-column="174" selection-end-line="5" selection-end-column="174" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/advert/showAll.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="56" selection-start-line="3" selection-start-column="56" selection-end-line="3" selection-end-column="56" />
         </state>
       </provider>
     </entry>
@@ -723,20 +700,58 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/AdvertType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="63" column="85" lean-forward="true" selection-start-line="63" selection-start-column="4" selection-end-line="63" selection-end-column="143" />
+        <state relative-caret-position="-152">
+          <caret line="27" column="83" selection-start-line="27" selection-start-column="83" selection-end-line="27" selection-end-column="83" />
+          <folding>
+            <element signature="e#34#74#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/public/js/map.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/advert/showAll.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/AdvertController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="220" column="2" selection-start-line="220" selection-start-column="2" selection-end-line="220" selection-end-column="2" />
+        <state relative-caret-position="874">
+          <caret line="224" column="63" selection-start-line="224" selection-start-column="63" selection-end-line="224" selection-end-column="63" />
           <folding>
             <element signature="e#38#66#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="63" column="70" selection-start-line="63" selection-start-column="69" selection-end-line="63" selection-end-column="112" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/advert/categories.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/advert/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="30" column="46" lean-forward="true" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
         </state>
       </provider>
     </entry>

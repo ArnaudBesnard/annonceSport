@@ -28,7 +28,7 @@
     {% endfor %}
     </div>
 <hr />
-<h3>Les différentes catégories</h3>
+<h3>Les différentes catégories d'annonces</h3>
     {{ render(controller("AppBundle:Advert:viewCategories", {'limit': 5})) }}
     <ul><li><a href="">Proposer une catégorie</a></li></ul>
 {% endblock %}

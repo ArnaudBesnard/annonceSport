@@ -222,7 +222,7 @@ class AdvertController extends Controller
             $adverts,
             $request->query->get('page', 1)/*le numéro de la page à afficher*/, 4/*nbre d'éléments par page*/
         );
-        return $this->render('advert/advertsByCat.html.twig', array(
+        return $this->render('advert/showAll.html.twig', array(
             'advert' => $advert,
         ));
     }
