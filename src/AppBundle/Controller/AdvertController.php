@@ -44,9 +44,7 @@ class AdvertController extends Controller
         $em = $this->getDoctrine()->getManager();
         $adverts = $em->getRepository('AppBundle:Advert')->findBy(
             array('published' => 1), // Critere
-            array('postedAt' => 'desc'),        // Tri
-            null,                              // Limite
-            0                               // Offset
+            array('postedAt' => 'desc')
         );
         $advert = $this->get('knp_paginator')->paginate(
             $adverts,
@@ -70,9 +68,7 @@ class AdvertController extends Controller
         $em = $this->getDoctrine()->getManager();
         $adverts = $em->getRepository('AppBundle:Advert')->findBy(
             array('category' => $cat), // Critere
-            array('postedAt' => 'desc'),        // Tri
-            null,                          // Limite
-            0                             // Offset
+            array('postedAt' => 'desc')
         );
         $advert = $this->get('knp_paginator')->paginate(
             $adverts,
@@ -214,22 +210,21 @@ class AdvertController extends Controller
          * @Route("/advByCat/{category}", name="advByCat")
          * @Method({"GET"})
          */
-    public function advByCatAction(Request $request){
-         $cat = $request->query->get('category');
-         $em = $this->getDoctrine()->getManager();
-         $adverts = $em->getRepository('AppBundle:Advert')->findBy(
-              array('category' => $cat), // Critere
-              array('postedAt' => 'desc'),        // Tri
-         null,                              // Limite
-         0                               // Offset
-         );
-         $advert = $this->get('knp_paginator')->paginate(
-         $adverts,
-         $request->query->get('page', 1)/*le numéro de la page à afficher*/, 4/*nbre d'éléments par page*/
-         );
-         return $this->render('advert/advertsByCat.html.twig', array(
-              'advert' => $advert,
-         ));
+    public function advByCatAction(Request $request, $category){
+        $catName = $category;
+        $em = $this->getDoctrine()->getManager();
+        $cat = $em->getRepository('AppBundle:Categories')->findOneBy(['category' => $catName]);
+        $adverts = $em->getRepository('AppBundle:Advert')->findBy(
+            array('category' => $cat), // Critere
+            array('postedAt' => 'desc') // Tri
+        );
+        $advert = $this->get('knp_paginator')->paginate(
+            $adverts,
+            $request->query->get('page', 1)/*le numéro de la page à afficher*/, 4/*nbre d'éléments par page*/
+        );
+        return $this->render('advert/advertsByCat.html.twig', array(
+            'advert' => $advert,
+        ));
     }
 
 }

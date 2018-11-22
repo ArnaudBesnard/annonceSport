@@ -25,7 +25,7 @@ class AdvertType extends AbstractType
         $dpt = [];
         $communes = [];
         $json_dpt = file_get_contents('https://geo.api.gouv.fr/departements');
-        $json_communes = file_get_contents('https://geo.api.gouv.fr/departements/33/communes');
+        $json_communes = file_get_contents('https://geo.api.gouv.fr/departements/56/communes');
         $json_data_dpt = json_decode($json_dpt);
         $json_data_communes = json_decode($json_communes);
         }

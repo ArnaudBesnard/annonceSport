@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<h2>Les annonces publiées sur le site</h2>
+<h2>Les annonces publiées sur le site dans la catégorie </h2>
     <hr />
     {% for advert in advert %}
         <div class="well">
@@ -17,7 +17,7 @@
                     {% if advert.id is not null %}
                 <a href="{{ path('advert_show', { 'id': advert.id }) }}"><h5> {{ advert.title }} </h5></a>
                         <div class="advert_infos">Postée le {{ advert.postedAt|date('d/m/Y') }} à {{ advert.postedAt|date('H:i') }}</div>
-                        <div class="advert_infos">Catégorie : {{ advert.category }} </div>
+                        <div class="advert_infos">Catégorie : <a href="{{ path('advByCat', { 'category': advert.category }) }}">{{ advert.category }}</a> </div>
                         <div class="advert_infos">{{ advert.city }} - {{ advert.department }}</div>
                         <br /><div class="advert_price">{{ advert.price }} €</div>
             {% else %}
