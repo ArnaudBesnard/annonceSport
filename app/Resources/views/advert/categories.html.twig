@@ -1,7 +1,7 @@
     <ul>
         {% for category in listCategories %}
             <li>
-                <a href="{{ path('advByCat', { 'category': category.category }) }}">{{ category.category }}</a>
+                <a href="{{ path('advByCat', { 'catName': category.category }) }}">{{ category.category }}</a>
             </li>
         {% else %}
             <li>Pas (encore !) de catégorie</li>

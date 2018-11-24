@@ -12,9 +12,9 @@
 </ul>
 <h4>Mon compte</h4>
 <ul>
-  <li>Se connecter</li>
-  <li><a href="">Créer un compte</a> </li>
-  <li>Mon profil</li>
+  <li><a href="{{ path('fos_user_security_login') }}">Se connecter</a></li>
+  <li><a href="{{ path('fos_user_registration_register') }}">Créer un compte</a></li>
+  <li><a href="{{ path('fos_user_profile_show') }}">Mon profil</a></li>
   <li>Mes annonces</li>
 </ul>
 <h4>Dernières annonces</h4>

@@ -1,3 +1,56 @@
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
+# app/config/routing.yml
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+advert_index:
+    path:      /
+    defaults:
+        _controller: AppBundle:Advert:index
+
+advert_showAll:
+    path:    /showAll
+    defaults:
+        _controller: AppBundle:Advert:showAll
+
+advert_search:
+    path:    /search
+    defaults:
+        _controller: AppBundle:Advert:search
+
+advert_new:
+    path:    /new
+    defaults:
+        _controller: AppBundle:Advert:new
+
+advert_show:
+    path:    /{id}
+    defaults:
+        _controller: AppBundle:Advert:show
+
+advert_edit:
+    path:    /{id}/edit
+    defaults:
+        _controller: AppBundle:Advert:edit
+
+advByCat:
+    path: /advByCat/{catName}
+    defaults:
+        _controller: AppBundle:Advert:advByCat
+
+advert_categories:
+    path: /categories
+    defaults:
+        _controller: AppBundle:Advert:viewCategorie
+
+advert_menu:
+    path:    /menu
+    defaults:
+        _controller: AppBundle:Advert:menu
+
+advert_delete:
+    path: /delete/{id}
+    defaults:
+        _controller: AppBundle:Advert:delete
+        methods:  DELETE
+
+

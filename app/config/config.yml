@@ -80,3 +80,14 @@ knp_paginator:
         pagination: '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig'
         sortable: '@KnpPaginator/Pagination/sortable_link.html.twig'
 
+# app/config/config.yml
+fos_user:
+    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
+    firewall_name: main
+    user_class: AppBundle\Entity\User
+    service:                               # this lines
+            mailer: fos_user.mailer.twig_swift # this lines
+    from_email:
+        address: "%mailer_user%"
+        sender_name: "%mailer_user%"
+

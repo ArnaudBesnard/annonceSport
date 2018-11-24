@@ -8,19 +8,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Response;
-/**
- * Advert controller.
- *
- * @Route("/")
- */
+
 class AdvertController extends Controller
 {
-    /**
-     * Lists all advert entities.
-     *
-     * @Route("/", name="advert_index")
-     * @Method("GET")
-     */
+
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -34,12 +25,7 @@ class AdvertController extends Controller
             'adverts' => $adverts,
         ));
     }
-    /**
-     * Lists all advert entities.
-     *
-     * @Route("/showAll", name="advert_showAll")
-     * @Method({"GET", "POST"})
-     */
+
     public function showAllAction(Request $request){
         $em = $this->getDoctrine()->getManager();
         $adverts = $em->getRepository('AppBundle:Advert')->findBy(
@@ -54,12 +40,7 @@ class AdvertController extends Controller
             'advert' => $advert,
         ));
     }
-    /**
-     * Search
-     *
-     * @Route("/search", name="advert_search")
-     * @Method({"GET", "POST"})
-     */
+
     public function searchAction(Request $request){
         $form = $this->createForm('AppBundle\Form\SearchType');
         $form->handleRequest($request);
@@ -79,12 +60,7 @@ class AdvertController extends Controller
             'form' => $form->createView(),
         ));
     }
-    /**
-     * Creates a new advert entity.
-     *
-     * @Route("/new", name="advert_new")
-     * @Method({"GET", "POST"})
-     */
+
     public function newAction(Request $request)
     {
         $advert = new Advert();
@@ -101,12 +77,7 @@ class AdvertController extends Controller
             'form' => $form->createView(),
         ));
     }
-    /**
-     * Finds and displays a advert entity.
-     *
-     * @Route("/{id}", name="advert_show")
-     * @Method("GET")
-     */
+
     public function showAction(Advert $advert)
     {
         $deleteForm = $this->createDeleteForm($advert);
@@ -115,12 +86,7 @@ class AdvertController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
-    /**
-     * Displays a form to edit an existing advert entity.
-     *
-     * @Route("/{id}/edit", name="advert_edit")
-     * @Method({"GET", "POST"})
-     */
+
     public function editAction(Request $request, Advert $advert)
     {
         $deleteForm = $this->createDeleteForm($advert);
@@ -136,12 +102,7 @@ class AdvertController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
-    /**
-     * Deletes a advert entity.
-     *
-     * @Route("/{id}", name="advert_delete")
-     * @Method("DELETE")
-     */
+
     public function deleteAction(Request $request, Advert $advert)
     {
         $form = $this->createDeleteForm($advert);
@@ -161,10 +122,7 @@ class AdvertController extends Controller
             ->getForm()
             ;
     }
-    /**
-     * @Route("/menu", name="advert_menu")
-     * @Method("GET")
-     */
+
     public function menuAction()
     {
         $repository = $this
@@ -183,10 +141,6 @@ class AdvertController extends Controller
         }
     }
 
-    /**
-     * @Route("/categories", name="advert_categories")
-     * @Method("GET")
-     */
     public function viewCategoriesAction()
     {
         $repository = $this
@@ -204,14 +158,9 @@ class AdvertController extends Controller
             ));
         }
     }
-        /**
-         * Lists all advert entities.
-         *
-         * @Route("/advByCat/{category}", name="advByCat")
-         * @Method({"GET"})
-         */
-    public function advByCatAction(Request $request, $category){
-        $catName = $category;
+
+    public function advByCatAction(Request $request, $catName){
+
         $em = $this->getDoctrine()->getManager();
         $cat = $em->getRepository('AppBundle:Categories')->findOneBy(['category' => $catName]);
         $adverts = $em->getRepository('AppBundle:Advert')->findBy(
