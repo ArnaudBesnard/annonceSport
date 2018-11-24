@@ -8,32 +8,32 @@ advert_index:
         _controller: AppBundle:Advert:index
 
 advert_showAll:
-    path:    /showAll
+    path:    /user/showAll
     defaults:
         _controller: AppBundle:Advert:showAll
 
 advert_search:
-    path:    /search
+    path:    /user/search
     defaults:
         _controller: AppBundle:Advert:search
 
 advert_new:
-    path:    /new
+    path:    /user/new
     defaults:
         _controller: AppBundle:Advert:new
 
 advert_show:
-    path:    /{id}
+    path:    /user/{id}
     defaults:
         _controller: AppBundle:Advert:show
 
 advert_edit:
-    path:    /{id}/edit
+    path:    /admin/{id}/edit
     defaults:
         _controller: AppBundle:Advert:edit
 
 advByCat:
-    path: /advByCat/{catName}
+    path: /user/advByCat/{catName}
     defaults:
         _controller: AppBundle:Advert:advByCat
 
@@ -48,7 +48,7 @@ advert_menu:
         _controller: AppBundle:Advert:menu
 
 advert_delete:
-    path: /delete/{id}
+    path: /admin/delete/{id}
     defaults:
         _controller: AppBundle:Advert:delete
         methods:  DELETE
