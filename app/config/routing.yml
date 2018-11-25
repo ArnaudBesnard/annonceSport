@@ -8,12 +8,17 @@ advert_index:
         _controller: AppBundle:Advert:index
 
 advert_showAll:
-    path:    /user/showAll
+    path:    /showAll
     defaults:
         _controller: AppBundle:Advert:showAll
 
+adverts_user:
+    path: /user/myAdverts
+    defaults:
+        _controller: AppBundle:Advert:userAdverts
+
 advert_search:
-    path:    /user/search
+    path:    /search
     defaults:
         _controller: AppBundle:Advert:search
 

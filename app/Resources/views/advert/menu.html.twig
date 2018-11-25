@@ -13,11 +13,14 @@
 </ul>
 <h4>Mon compte</h4>
 <ul>
+    {% if app.user is not null %}
+      <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+      <li><a href="{{ path('fos_user_profile_show') }}">Mon profil</a></li>
+        <li><a href="{{ path('adverts_user') }}">Mes annonces</a></li>
+    {% else %}
   <li><a href="{{ path('fos_user_security_login') }}">Se connecter</a></li>
   <li><a href="{{ path('fos_user_registration_register') }}">Créer un compte</a></li>
-  <li><a href="{{ path('fos_user_profile_show') }}">Mon profil</a></li>
-
-  <li>Mes annonces</li>
+    {% endif %}
 </ul>
 <h4>Dernières annonces</h4>
 <ul>

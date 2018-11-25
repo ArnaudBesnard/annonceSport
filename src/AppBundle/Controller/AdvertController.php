@@ -3,7 +3,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Advert;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Symfony\Component\Routing\Annotation\Route;
+//use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -166,6 +166,22 @@ class AdvertController extends Controller
         $adverts = $em->getRepository('AppBundle:Advert')->findBy(
             array('category' => $cat), // Critere
             array('postedAt' => 'desc') // Tri
+        );
+        $advert = $this->get('knp_paginator')->paginate(
+            $adverts,
+            $request->query->get('page', 1)/*le numéro de la page à afficher*/, 4/*nbre d'éléments par page*/
+        );
+        return $this->render('advert/showAll.html.twig', array(
+            'advert' => $advert,
+        ));
+    }
+
+    public function userAdvertsAction(request $request){
+        $user = $this->getUser()->getUsername();
+        $em = $this->getDoctrine()->getManager();
+        $adverts = $em->getRepository('AppBundle:Advert')->findBy(
+            array('author' => $user), // Critere
+            array('postedAt' => 'desc')
         );
         $advert = $this->get('knp_paginator')->paginate(
             $adverts,
