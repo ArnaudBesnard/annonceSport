@@ -97,5 +97,5 @@ fos_user:
             from_email:
                 address: admin@annonceSport.fr
                 sender_name: Admin annonceSport.fr
-            template: AppBundle:User:registration.email.twig
+            template: '@FOSUser/registration/email.txt.twig'
 

@@ -47,10 +47,20 @@ class AdvertType extends AbstractType
                                         'label'=>'Département *',
                                         'choices'  => $dpt
                     ))
-            ->add('City', ChoiceType::class, array(
-                'label'=>'Ville *',
-                'choices'  => $communes
-            ))
+                ->add('City', ChoiceType::class, array(
+                                        'label'=>'Ville *',
+                                        'choices'  => $communes
+                    ))
+                //Ajout des champs latitude et longitude pour géolocalisation
+                //
+                //->add('lat', HiddenType::class,array(
+                //                     'label'=>'Latitude'
+                //                     'data' => 'absdef'
+                //  ))
+                //->add('long', HiddenType::class,array(
+                //                      'label'=>'Longitude'
+                //                      'data' => 'absdef'
+                //  ))
                 ->add('Author',    TextType::class,array('label'=>'Nom ou pseudo * '))
                 ->add('Email', EmailType::class,array('label'=>'Email *'))
                 ->add('Tel', TextType::class,array(

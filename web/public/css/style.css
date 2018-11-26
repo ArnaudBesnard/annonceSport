@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'Cantarell';
+    src: url('public/fonts/Cantarell-Regular.ttf');
+}
+
+li {
+    list-style-type: none;
+    margin-left: -25px;
+}
+
 .header-top{
     height: 80px;
     width:100%;
@@ -7,6 +17,9 @@
     margin-bottom: 70px;
     /*z-index: 999;
     position: fixed;*/
+}
+h5{
+    color: black;
 }
 #logo{
     width: 415px;
