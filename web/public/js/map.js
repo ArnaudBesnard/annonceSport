@@ -1,8 +1,8 @@
 //Création de l'objet objMap
 var objMap = {
-    lat: 47.915138, //Latitude
-    lng: -3.334565, //Longitude
-    zoom: 12, //Niveau de zoom de la carte
+    lat: 46.227638, //Latitude
+    lng: 2.213749000000007, //Longitude
+    zoom: 5, //Niveau de zoom de la carte
 
     //Initialisation de la Map
     initMap: function () {

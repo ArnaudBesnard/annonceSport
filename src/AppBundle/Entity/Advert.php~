@@ -59,6 +59,18 @@ class Advert
     private $city;
 
     /**
+     *
+     * @ORM\Column(name="lat", type="decimal", length=255)
+     */
+    private $lat;
+
+    /**
+     *
+     * @ORM\Column(name="long", type="decimal", length=255)
+     */
+    private $long;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="author", type="string", length=255)

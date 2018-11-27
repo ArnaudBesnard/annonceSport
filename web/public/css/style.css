@@ -3,11 +3,11 @@
     src: url('public/fonts/Cantarell-Regular.ttf');
 }
 
-li {
+/*li {
     list-style-type: none;
     margin-left: -25px;
 }
-
+*/
 .header-top{
     height: 80px;
     width:100%;
