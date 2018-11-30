@@ -81,8 +81,14 @@ class AdvertController extends Controller
     public function showAction(Advert $advert)
     {
         $deleteForm = $this->createDeleteForm($advert);
+        $advertCity = $advert->getCity();
+        $em = $this->getDoctrine()->getManager();
+        $city = $em->getRepository('AppBundle:City')->findOneBy(
+            array('realName' => $advertCity)
+        );
         return $this->render('advert/show.html.twig', array(
             'advert' => $advert,
+            'city' => $city,
             'delete_form' => $deleteForm->createView(),
         ));
     }

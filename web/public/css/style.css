@@ -78,11 +78,14 @@ container{
     display: flex;
     justify-content: center;
 }
-#map{
+#advertMap{
     width: 800px;
     height: 400px;
     background-color: #999999;
     border: 1px solid black;
+}
+.localisation{
+    /*display:none;*/
 }
 #text_right{
     margin-right: 50px;
