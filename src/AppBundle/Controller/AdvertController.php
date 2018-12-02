@@ -1,6 +1,7 @@
 <?php
 namespace AppBundle\Controller;
 use AppBundle\Entity\Advert;
+use AppBundle\Entity\Departments;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 //use Symfony\Component\Routing\Annotation\Route;
@@ -45,12 +46,15 @@ class AdvertController extends Controller
         $form = $this->createForm('AppBundle\Form\SearchType');
         $form->handleRequest($request);
         $cat = $form['category']->getData();
-
+        $title = $form['title']->getData();
+        $city = $form['city']->getData();
         $em = $this->getDoctrine()->getManager();
-        $adverts = $em->getRepository('AppBundle:Advert')->findBy(
+
+       $adverts = $em->getRepository('AppBundle:Advert')->findBy(
             array('category' => $cat), // Critere
             array('postedAt' => 'desc')
         );
+
         $advert = $this->get('knp_paginator')->paginate(
             $adverts,
             $request->query->get('page', 1)/*le numéro de la page à afficher*/, 4/*nbre d'éléments par page*/

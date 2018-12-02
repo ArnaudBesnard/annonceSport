@@ -1,6 +1,7 @@
 <?php
 namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
+use AppBundle\Entity\Departments;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -40,8 +41,7 @@ class AdvertType extends AbstractType
                 'label' => 'Choisissez votre département *',
                 'placeholder' => '...'
             ))
-            ->add('city', TextType::class,array('label'=>'Votre ville *'))
-
+            ->add('city',    TextType::class,array('label'=>'Votre ville * '))
             ->add('Author',    TextType::class,array('label'=>'Nom ou pseudo * '))
             ->add('Email', EmailType::class,array('label'=>'Email *'))
             ->add('Tel', TextType::class,array(

@@ -85,8 +85,12 @@ container{
     border: 1px solid black;
 }
 .localisation{
-    /*display:none;*/
+    display:none;
 }
 #text_right{
     margin-right: 50px;
+}
+.searchForm{
+    background-color: #999999;
+    padding: 20px;
 }

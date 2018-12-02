@@ -1,10 +1,24 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div class="searchForm">
     {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <input class="btn btn-primary" type="submit" value="Afficher" />
+    <div class="row">
+        <div class="col-sm-4">
+            {{ form_row(form.category) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_row(form.title) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_row(form.city) }}
+        </div>
+    </div>
+    <div class="col-sm-12">
+    <center><input class="btn btn-primary" type="submit" value="Afficher les annonces" /></center>
+    </div>
     {{ form_end(form) }}
+    </div>
     <hr />
     {% for advert in advert %}
         <div class="well">
