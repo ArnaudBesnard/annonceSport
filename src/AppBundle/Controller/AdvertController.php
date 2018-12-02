@@ -48,12 +48,6 @@ class AdvertController extends Controller
         $cat = $form['category']->getData();
         $title = $form['title']->getData();
         $city = $form['city']->getData();
-        /*$em = $this->getDoctrine()->getManager();
-        $adverts = $em->getRepository('AppBundle:Advert')->findBy(
-            array('category' => $cat), // Critere
-            array('postedAt' => 'desc')
-        );*/
-
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->createQueryBuilder();
         $queryBuilder->select('a')
