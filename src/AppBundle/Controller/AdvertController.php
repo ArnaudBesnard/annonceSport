@@ -48,12 +48,24 @@ class AdvertController extends Controller
         $cat = $form['category']->getData();
         $title = $form['title']->getData();
         $city = $form['city']->getData();
-        $em = $this->getDoctrine()->getManager();
-
-       $adverts = $em->getRepository('AppBundle:Advert')->findBy(
+        /*$em = $this->getDoctrine()->getManager();
+        $adverts = $em->getRepository('AppBundle:Advert')->findBy(
             array('category' => $cat), // Critere
             array('postedAt' => 'desc')
-        );
+        );*/
+
+        $em = $this->getDoctrine()->getManager();
+        $queryBuilder = $em->createQueryBuilder();
+        $queryBuilder->select('a')
+            ->from(Advert::class, 'a')
+            ->where('a.category = :category')
+                ->setParameter('category', $cat)
+            ->andWhere('a.title LIKE :title OR a.content LIKE :title')
+                ->setParameter('title', '%'.$title.'%')
+            ->andWhere('a.city = :city OR a.department LIKE :city')
+                ->setParameter('city', $city);
+        $query = $queryBuilder->getQuery();
+        $adverts = $query->getResult();
 
         $advert = $this->get('knp_paginator')->paginate(
             $adverts,
@@ -201,5 +213,18 @@ class AdvertController extends Controller
             'advert' => $advert,
         ));
     }
+
+    public function countAdvertAction(){
+        $em = $this->getDoctrine()->getManager();
+        $queryBuilder = $em->createQueryBuilder();
+        $queryBuilder->select('COUNT(a.id)')
+            ->from(Advert::class, 'a')
+            ->where('a.published = :published')
+            ->setParameter('published', 1);
+        $query = $queryBuilder->getQuery();
+        $count = $query->getSingleScalarResult();
+        return new Response($count);
+    }
+
 
 }

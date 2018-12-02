@@ -21,7 +21,8 @@ class SearchType extends AbstractType
                         'label' => 'Catégorie',
                         'choice_label' => 'category',
                     ))
-            ->add('title', TextType::class,array('label' => 'Votre recherche'))
+            ->add('title', TextType::class,array('label' => 'Votre recherche',
+                'required' => false))
             ->add('city', TextType::class,array('label' => 'Localisation'));
     }
 
