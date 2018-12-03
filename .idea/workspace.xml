@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07d5d861-4e7a-47b4-bbca-39e0a5ecb507" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/AdvertController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/AdvertController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/advert/search.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/advert/search.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/public/css/style.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -40,8 +41,8 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/public/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="93" column="30" selection-start-line="93" selection-start-column="30" selection-end-line="93" selection-end-column="30" />
+            <state relative-caret-position="428">
+              <caret line="39" column="16" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -49,8 +50,8 @@
       <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="39" column="63" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="68" />
+            <state relative-caret-position="500">
+              <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -67,20 +68,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="search.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="search.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/advert/search.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+            <state relative-caret-position="60">
+              <caret line="3" column="29" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdvertController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AdvertController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/AdvertController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="55" column="48" lean-forward="true" selection-start-line="55" selection-start-column="48" selection-end-line="55" selection-end-column="48" />
+            <state relative-caret-position="1100">
+              <caret line="55" column="48" selection-start-line="55" selection-start-column="48" selection-end-line="55" selection-end-column="48" />
               <folding>
                 <element signature="e#38#66#0#PHP" expanded="true" />
               </folding>
@@ -168,13 +169,13 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Advert.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/AdvertType.php" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
-        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/views/advert/search.html.twig" />
         <option value="$PROJECT_DIR$/web/public/js/map.js" />
-        <option value="$PROJECT_DIR$/web/public/css/style.css" />
         <option value="$PROJECT_DIR$/app/Resources/views/advert/showAll.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/SearchType.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/AdvertController.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
+        <option value="$PROJECT_DIR$/web/public/css/style.css" />
+        <option value="$PROJECT_DIR$/app/Resources/views/advert/search.html.twig" />
       </list>
     </option>
   </component>
@@ -397,12 +398,12 @@
       <workItem from="1542566819017" duration="65998000" />
       <workItem from="1542962802823" duration="34586000" />
       <workItem from="1543246620882" duration="33105000" />
-      <workItem from="1543657539912" duration="17591000" />
+      <workItem from="1543657539912" duration="18701000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="235427000" />
+    <option name="totallyTimeSpent" value="236537000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -751,31 +752,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/public/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="93" column="30" selection-start-line="93" selection-start-column="30" selection-end-line="93" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="39" column="63" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/advert/showAll.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/advert/search.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -791,11 +771,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/AdvertController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="55" column="48" lean-forward="true" selection-start-line="55" selection-start-column="48" selection-end-line="55" selection-end-column="48" />
+        <state relative-caret-position="1100">
+          <caret line="55" column="48" selection-start-line="55" selection-start-column="48" selection-end-line="55" selection-end-column="48" />
           <folding>
             <element signature="e#38#66#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/public/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="39" column="16" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/advert/search.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="3" column="29" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
         </state>
       </provider>
     </entry>
