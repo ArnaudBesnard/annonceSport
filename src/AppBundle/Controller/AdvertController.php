@@ -13,8 +13,37 @@ use Symfony\Component\HttpFoundation\Response;
 class AdvertController extends Controller
 {
 
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+        $form = $this->createForm('AppBundle\Form\SearchIndexType');
+        $form->handleRequest($request);
+
+        $cat = $form['category']->getData();
+        $title = $form['title']->getData();
+        $city = $form['city']->getData();
+        $em = $this->getDoctrine()->getManager();
+        $queryBuilder = $em->createQueryBuilder();
+        $queryBuilder->select('a')
+            ->from(Advert::class, 'a')
+            ->where('a.category = :category')
+            ->setParameter('category', $cat)
+            ->andWhere('a.title LIKE :title OR a.content LIKE :title')
+            ->setParameter('title', '%'.$title.'%')
+            ->andWhere('a.city = :city OR a.department LIKE :city')
+            ->setParameter('city', $city);
+        $query = $queryBuilder->getQuery();
+        $adverts = $query->getResult();
+
+        $advert = $this->get('knp_paginator')->paginate(
+            $adverts,
+            $request->query->get('page', 1)/*le numéro de la page à afficher*/, 4/*nbre d'éléments par page*/
+        );
+        return $this->render('advert/index.html.twig', array(
+            'advert' => $advert,
+            'form' => $form->createView(),
+        ));
+    }
+    public function indexBaseAction(){
         $em = $this->getDoctrine()->getManager();
         $adverts = $em->getRepository('AppBundle:Advert')->findBy(
             array('published' => 1), // Critere
@@ -22,7 +51,7 @@ class AdvertController extends Controller
             6,                              // Limite
             0                               // Offset
         );
-        return $this->render('advert/index.html.twig', array(
+        return $this->render('advert/indexBase.html.twig', array(
             'adverts' => $adverts,
         ));
     }

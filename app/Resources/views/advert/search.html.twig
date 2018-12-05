@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h2>Rechercher un article</h2>
     <div class="searchForm">
     {{ form_start(form) }}
     <div class="row">
@@ -20,30 +19,30 @@
     </div>
     {{ form_end(form) }}
     </div>
-    <hr />
+
     {% for advert in advert %}
         <div class="well">
-            <div class="advert_container">
-                <div class="advert_column">
-                    {% if advert.image is not null %}
-                        <a href="{{ path('advert_show', { 'id': advert.id }) }}"><img class="advert_display_img" src="{{ asset(advert.image.webPath) }}" alt="{{ advert.image.alt }}"></a>
-                    {% else %}
-                        <a href="{{ path('advert_show', { 'id': advert.id }) }}"><img class="advert_display_img" src="{{ asset('public/images/aucune.jpg') }}" alt="Aucune image"></a>
-                    {% endif %}
-                </div>
-                <div class="advert_column">
-                    {% if advert.id is not null %}
-                        <a href="{{ path('advert_show', { 'id': advert.id }) }}"><h5> {{ advert.title }} </h5></a>
-                        <div class="advert_infos">Postée le {{ advert.postedAt|date('d/m/Y') }} à {{ advert.postedAt|date('H:i') }}</div>
-                        <div class="advert_infos">Catégorie : {{ advert.category }} </div>
-                        <div class="advert_infos">{{ advert.city }} - {{ advert.department }}</div>
-                        <br /><div class="advert_price">{{ advert.price }} €</div>
-                    {% else %}
-                        Actuellement, il n'y a aucune annonce publiée!
-                    {% endif %}
-                </div>
+        <div class="advert_container">
+            <div class="advert_column">
+                {% if advert.image is not null %}
+                    <a href="{{ path('advert_show', { 'id': advert.id }) }}"><img class="advert_display_img" src="{{ asset(advert.image.webPath) }}" alt="{{ advert.image.alt }}"></a>
+                {% else %}
+                    <a href="{{ path('advert_show', { 'id': advert.id }) }}"><img class="advert_display_img" src="{{ asset('public/images/aucune.jpg') }}" alt="Aucune image"></a>
+                {% endif %}
+            </div>
+            <div class="advert_column">
+                {% if advert.id is not null %}
+                    <a href="{{ path('advert_show', { 'id': advert.id }) }}"><h5> {{ advert.title }} </h5></a>
+                    <div class="advert_infos">Postée le {{ advert.postedAt|date('d/m/Y') }} à {{ advert.postedAt|date('H:i') }}</div>
+                    <div class="advert_infos">Catégorie : {{ advert.category }} </div>
+                    <div class="advert_infos">{{ advert.city }} - {{ advert.department }}</div>
+                    <br /><div class="advert_price">{{ advert.price }} €</div>
+                {% else %}
+                    Actuellement, il n'y a aucune annonce publiée!
+                {% endif %}
             </div>
         </div>
+    </div>
         <hr />
     {% else %}
         Aucune catégorie sélectionnée ou aucune annonce dans cette catégorie !

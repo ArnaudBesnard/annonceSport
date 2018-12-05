@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Arno
+ * Date: 04/12/2018
+ * Time: 22:05
+ */
 
 namespace AppBundle\Form;
 
@@ -10,41 +16,36 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-class SearchType extends AbstractType
+
+class SearchIndexType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
+
         $builder->add('category', EntityType::class, array(
             'class' => 'AppBundle:Categories',
+            'label' => false,
             'placeholder' =>'Catégorie',
-            'label' => 'Catégorie',
             'choice_label' => 'category',
         ))
-            ->add('title', TextType::class,array('label' => 'Votre recherche',
-                'required' => false))
-            ->add('city', TextType::class,array('label' => 'Localisation'));
+            ->add('title', TextType::class, array('label' => false,
+                'required' => false,
+                'attr' => array(
+                    'placeholder' => 'Votre recherche...',
+                )))
+            ->add('city', TextType::class, array('label' => false,
+                'attr' => array(
+                    'placeholder' => 'Département, ville',
+                )));
+        //->add('save', SubmitType::class);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function configureOptions(OptionsResolver $resolver)
+    public function getParent()
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Advert'
-        ));
+        return SearchType::class;
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getBlockPrefix()
-    {
-        return 'appbundle_advert';
-    }
-
-
 }

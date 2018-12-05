@@ -1,33 +1,59 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
-<h3>Les dernières annonces publiées</h3>
-<hr />
-    <div class="advert_display">
-    {% for advert in adverts %}
-        <div class="well">
-
-            {% if advert.id is not null %}
-            <a href="{{ path('advert_show', { 'id': advert.id }) }}"><h5> {{ advert.title }} </h5></a>
-                {% if advert.image is not null %}
-                    <a href="{{ path('advert_show', { 'id': advert.id }) }}"><img class="advert_display_img" src="{{ asset(advert.image.webPath) }}" alt="{{ advert.image.alt }}"></a>
-                    {% else %}
-                        <a href="{{ path('advert_show', { 'id': advert.id }) }}"><img class="advert_display_img" src="{{ asset('public/images/aucune.jpg') }}" alt="Aucune image"></a>
-                {% endif %}
-                <div class="advert_infos">Catégorie : <a href="{{ path('advByCat', { 'catName': advert.category }) }}">{{ advert.category }}</a> | par : {{ advert.author }}</div><br />
-            {% else %}
-                Actuellement, il n'y a aucune annonce publiée!
-            {% endif %}
-
+    <div class="searchForm">
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col-sm-3">
+                {{ form_row(form.category) }}
+            </div>
+            <div class="col-sm-3">
+                {{ form_row(form.title) }}
+            </div>
+            <div class="col-sm-3">
+                {{ form_row(form.city) }}
+            </div>
+            <div class="col-sm-3">
+                <div class="formButton"><input class="btn btn-primary btn-sm" type="submit"
+                                               value="Afficher les annonces"/></div>
+            </div>
         </div>
-<hr />
-    {% else %}
-        <li>Pas (encore !) d'annonces</li>
-    {% endfor %}
+        {{ form_end(form) }}
     </div>
-<hr />
-<h3>Les différentes catégories d'annonces</h3>
-    {{ render(controller("AppBundle:Advert:viewCategories", {'limit': 5})) }}
-    <ul><li><a href="">Proposer une catégorie</a></li></ul>
+    <hr/>
+    {% for advert in advert %}
+        <div class="well">
+            <div class="advert_container">
+                <div class="advert_column">
+                    {% if advert.image is not null %}
+                        <a href="{{ path('advert_show', { 'id': advert.id }) }}"><img class="advert_display_img"
+                                                                                      src="{{ asset(advert.image.webPath) }}"
+                                                                                      alt="{{ advert.image.alt }}"></a>
+                    {% else %}
+                        <a href="{{ path('advert_show', { 'id': advert.id }) }}"><img class="advert_display_img"
+                                                                                      src="{{ asset('public/images/aucune.jpg') }}"
+                                                                                      alt="Aucune image"></a>
+                    {% endif %}
+                </div>
+                <div class="advert_column">
+                    {% if advert.id is not null %}
+                        <a href="{{ path('advert_show', { 'id': advert.id }) }}"><h5> {{ advert.title }} </h5></a>
+                        <div class="advert_infos">Postée le {{ advert.postedAt|date('d/m/Y') }}
+                            à {{ advert.postedAt|date('H:i') }}</div>
+                        <div class="advert_infos">Catégorie : {{ advert.category }} </div>
+                        <div class="advert_infos">{{ advert.city }} - {{ advert.department }}</div>
+                        <br/>
+                        <div class="advert_price">{{ advert.price }} €</div>
+                    {% else %}
+                        Actuellement, il n'y a aucune annonce publiée!
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="center">{{ knp_pagination_render(advert) }}</div>
+    <hr/>
+    {% if advert is not null %}
+        {{ render(controller("AppBundle:Advert:indexBase")) }}
+    {% endif %}
 {% endblock %}

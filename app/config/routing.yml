@@ -50,6 +50,11 @@ advert_categories:
 advert_menu:
     path:    /menu
     defaults:
+        _controller: AppBundle:Advert:indexBase
+
+advert_indexBase:
+    path:    /indexBase
+    defaults:
         _controller: AppBundle:Advert:menu
 
 advert_delete:

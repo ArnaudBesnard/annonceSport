@@ -30,6 +30,7 @@ class AdvertType extends AbstractType
         };
         $builder->add('category', EntityType::class, array(
             'class' => 'AppBundle:Categories',
+            'placeholder' => 'Catégorie',
             'label' => 'Choisissez votre catégorie *',
             'choice_label' => 'category'
         ))
