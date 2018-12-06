@@ -4,13 +4,15 @@
    tout comme le template inclus avec {{ include() }}. #}
 <div class="menu">
 
-<h4><a href="{{ path('advert_index') }}">Accueil</a></h4>
+<span class="menuAddAdvert"><a href="{{ path('advert_new') }}">Déposer une annonce</a></span>
+    <hr />
 <h4>Les annonces</h4>
 <ul>
   <li><a href="{{ path('advert_search') }}"><i class="fa fa-search"></i> Rechercher</a></li>
   <li><a href="{{ path('advert_showAll') }}"><i class="fas fa-eye"></i> Toutes les annonces</a></li>
   <li><a href="{{ path('advert_new') }}"><i class="fa fa-plus-circle"></i> Déposer une annonce</a></li>
 </ul>
+    <hr />
 <h4>Mon compte</h4>
 <ul>
     {% if app.user is not null %}
@@ -22,14 +24,5 @@
   <li><a href="{{ path('fos_user_registration_register') }}"><i class="fa fa-user-plus"></i> Créer un compte</a></li>
     {% endif %}
 </ul>
-<h4>Dernières annonces</h4>
-<ul>
-  {% for advert in listAdverts %}
-    <li>
-      <a href="{{ path('advert_show', {'id': advert.id}) }}">
-        {{ advert.title }}
-      </a>
-    </li>
-  {% endfor %}
-</ul>
+
 </div>
