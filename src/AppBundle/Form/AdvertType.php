@@ -2,6 +2,7 @@
 namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use AppBundle\Entity\Departments;
+use AppBundle\Entity\User;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -21,13 +22,6 @@ class AdvertType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-
-        $communes = [];
-        $json_communes = file_get_contents('https://geo.api.gouv.fr/departements/56/communes');
-        $json_data_communes = json_decode($json_communes);
-        foreach($json_data_communes as $vc){
-            $communes[$vc->nom] = $vc->nom;
-        };
         $builder->add('category', EntityType::class, array(
             'class' => 'AppBundle:Categories',
             'placeholder' => 'Catégorie',
@@ -43,11 +37,9 @@ class AdvertType extends AbstractType
                 'placeholder' => '...'
             ))
             ->add('city',    TextType::class,array('label'=>'Votre ville * '))
-            ->add('Author',    TextType::class,array('label'=>'Nom ou pseudo * '))
-            ->add('Email', EmailType::class,array('label'=>'Email *'))
             ->add('Tel', TextType::class,array(
                 'required' => false,
-                'label'=>'Votre téléphone'))
+                'label'=>'Votre téléphone (facultatif)'))
             ->add('image',   ImageType::class, array(
                 'label' => 'Ajouter une image',
                 'required' => false
@@ -60,7 +52,7 @@ class AdvertType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Advert'
+            'data_class' => 'AppBundle\Entity\Advert',
         ));
     }
     /**

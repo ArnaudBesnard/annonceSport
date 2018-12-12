@@ -2,7 +2,7 @@
 
 {% block body %}
 
-<h2>{{ advert.title }}</h2>
+<h1>{{ advert.title }}</h1>
   <div class="advert_author">Proposé par : {{ advert.author }} dans la Catégorie : <a href="{{ path('advByCat', { 'catName': advert.category }) }}">{{ advert.category }}</a></div>
 <hr />
 {# On vérifie qu'une image soit bien associée à l'annonce #}
@@ -16,17 +16,20 @@
     <br />
     <div class="advert_price">Prix : {{ advert.price }} €</div>
     <hr />
-    <h4>Descriptif de l'annonce</h4>
+    <h2>Descriptif de l'annonce</h2>
     {{ advert.content }}
   </div>
     <hr />
     <div class="well">
-      <h4>Contacter le vendeur</h4>
+      <h2>Contacter le vendeur</h2>
+      <b>Vendeur :</b> {{ advert.author }}<br />
       <b>Département :</b> {{ advert.department }}<br />
       <b>Ville :</b> {{ advert.city }}<br />
       <b>Adresse email :</b> {{ advert.email }}<br />
         {% if advert.tel is not null %}
       <b>Téléphone :</b> {{ advert.tel }}
+            {% else %}
+              <b>Téléphone :</b> Non renseigné
         {% endif %}
       <div class="localisation">
         <b>Latitude : </b><span id="lat">{{ city.latitude }}</span><br />
@@ -34,20 +37,22 @@
       </div>
     </div>
     <hr />
-    <h4>Localisation de l'objet :</h4>
+    <h2>Localisation de l'objet :</h2>
 <div id="advertMap"></div>
   <p>
     <a href="{{ path('advert_index') }}" class="btn btn-default">
       <i class="glyphicon glyphicon-chevron-left"></i>
       Retour à la liste
     </a>
+      {% if app.user == advert.author %}
     <a href="{{ path('advert_edit', { 'id': advert.id }) }}" class="btn btn-default">
       <i class="glyphicon glyphicon-edit"></i>
       Modifier l'annonce
     </a>
-    {{ form_start(delete_form) }}
+      {{ form_start(delete_form) }}
                 <input class="btn btn-danger" type="submit" value="Supprimer l'annonce" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette annonce ?');">
-            {{ form_end(delete_form) }}
+      {{ form_end(delete_form) }}
+    {% endif %}
   </p>
 
 

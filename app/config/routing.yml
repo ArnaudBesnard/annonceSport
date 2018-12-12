@@ -28,7 +28,7 @@ advert_new:
         _controller: AppBundle:Advert:new
 
 advert_show:
-    path:    /user/{id}
+    path:    /{id}
     defaults:
         _controller: AppBundle:Advert:show
 
@@ -63,4 +63,14 @@ advert_delete:
         _controller: AppBundle:Advert:delete
         methods:  DELETE
 
+#Administration
 
+admin_index:
+    path: /admin/administration
+    defaults:
+        _controller: AppBundle:Admin:indexAdmin
+
+advert_valid:
+    path: /admin/validAdvert
+    defaults:
+        _controller: AppBundle:Admin:validAdvert

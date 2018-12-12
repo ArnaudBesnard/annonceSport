@@ -5,13 +5,13 @@
         <div class="well">
 
             {% if advert.id is not null %}
-                <a href="{{ path('advert_show', { 'id': advert.id }) }}"><h3> {{ advert.title }} </h3></a>
+                <a href="{{ path('advert_show', { 'id': advert.id }) }}"><h4> {{ advert.title }} </h4></a>
                 {% if advert.image is not null %}
                     <a href="{{ path('advert_show', { 'id': advert.id }) }}"><img class="advert_display_img" src="{{ asset(advert.image.webPath) }}" alt="{{ advert.image.alt }}"></a>
                 {% else %}
                     <a href="{{ path('advert_show', { 'id': advert.id }) }}"><img class="advert_display_img" src="{{ asset('public/images/aucune.jpg') }}" alt="Aucune image"></a>
                 {% endif %}
-                <div class="advert_infos">Catégorie : <a href="{{ path('advByCat', { 'catName': advert.category }) }}">{{ advert.category }}</a> | par : {{ advert.author }}</div><br />
+                <div class="advert_infos">Catégorie : <a href="{{ path('advByCat', { 'catName': advert.category }) }}">{{ advert.category }}</a></div><br />
             {% else %}
                 Actuellement, il n'y a aucune annonce publiée!
             {% endif %}

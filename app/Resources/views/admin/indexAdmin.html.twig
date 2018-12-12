@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>TABLEAU DE BORD</h1>
+    <hr />
+    <h2>Les annonces en attente de validation</h2>
+
+    <div class="validateAdverts">
+        Il y a actuellement :<span style='color: red;'>{{ render(controller("AppBundle:Admin:countUnvalid")) }}</span>
+        annonces non validées
+    </div>
+    <hr/>
+    <h2>Les 5 derniers membres enregistrés</h2>
+    <div class="adminLastUsers">
+        <div class="row">
+            <div class="col-md-3"><b>Nom d'utilisateur</b></div>
+            <div class="col-md-9"><b>Email</b></div>
+        </div>
+        <hr/>
+        <div class="row">
+            {% for users in users %}
+                <div class="col-md-3">{{ users.username }}</div>
+                <div class="col-md-9">{{ users.email }}</div>
+            {% endfor %}
+        </div>
+
+
+    </div>
+{% endblock %}

@@ -2,6 +2,7 @@
 namespace AppBundle\Controller;
 use AppBundle\Entity\Advert;
 use AppBundle\Entity\Departments;
+use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 //use Symfony\Component\Routing\Annotation\Route;
@@ -25,12 +26,13 @@ class AdvertController extends Controller
         $queryBuilder = $em->createQueryBuilder();
         $queryBuilder->select('a')
             ->from(Advert::class, 'a')
-            ->where('a.category = :category')
-            ->setParameter('category', $cat)
+            ->Where('a.published = 1')
+            ->andWhere('a.category = :category')
+                ->setParameter('category', $cat)
             ->andWhere('a.title LIKE :title OR a.content LIKE :title')
-            ->setParameter('title', '%'.$title.'%')
+                ->setParameter('title', '%'.$title.'%')
             ->andWhere('a.city = :city OR a.department LIKE :city')
-            ->setParameter('city', $city);
+                ->setParameter('city', $city);
         $query = $queryBuilder->getQuery();
         $adverts = $query->getResult();
 
@@ -81,7 +83,8 @@ class AdvertController extends Controller
         $queryBuilder = $em->createQueryBuilder();
         $queryBuilder->select('a')
             ->from(Advert::class, 'a')
-            ->where('a.category = :category')
+            ->Where('a.published = 1')
+            ->andWhere('a.category = :category')
                 ->setParameter('category', $cat)
             ->andWhere('a.title LIKE :title OR a.content LIKE :title')
                 ->setParameter('title', '%'.$title.'%')
@@ -107,6 +110,8 @@ class AdvertController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $advert->setAuthor($this->getUser());
+            $advert->setEmail($this->getUser()->getEmail());
             $em->persist($advert);
             $em->flush();
             return $this->redirectToRoute('advert_show', array('id' => $advert->getId()));
