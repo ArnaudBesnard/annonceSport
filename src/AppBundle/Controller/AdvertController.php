@@ -1,6 +1,7 @@
 <?php
 namespace AppBundle\Controller;
 use AppBundle\Entity\Advert;
+use AppBundle\Entity\Categories;
 use AppBundle\Entity\Departments;
 use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -191,24 +192,6 @@ class AdvertController extends Controller
         }
     }
 
-    public function viewCategoriesAction()
-    {
-        $repository = $this
-            ->getDoctrine()
-            ->getManager()
-            ->getRepository('AppBundle:Categories');
-        $listCategories = $repository->findAll();
-        foreach ($listCategories as $category) {
-            // $advert est une instance de Advert
-            //echo $advert->getContent();
-            return $this->render('advert/categories.html.twig', array(
-                // Tout l'intérêt est ici : le contrôleur passe
-                // les variables nécessaires au template !
-                'listCategories' => $listCategories
-            ));
-        }
-    }
-
     public function advByCatAction(Request $request, $catName){
 
         $em = $this->getDoctrine()->getManager();
@@ -253,6 +236,7 @@ class AdvertController extends Controller
         $count = $query->getSingleScalarResult();
         return new Response($count);
     }
+
 
 
 }

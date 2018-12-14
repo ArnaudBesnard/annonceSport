@@ -30,6 +30,13 @@ class Categories
     private $category;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="familly", type="string", length=255)
+     */
+    private $familly;
+
+    /**
      * Get id
      *
      * @return int

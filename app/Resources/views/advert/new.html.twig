@@ -6,6 +6,9 @@
 <hr />
     {{ form_start(form) }}
         {{ form_widget(form) }}
+
+    {{ form_row(form.published) }}
+
         <input class="btn btn-primary" type="submit" value="Ajouter votre annonce" />
     {{ form_end(form) }}
 

@@ -44,7 +44,8 @@
       <i class="glyphicon glyphicon-chevron-left"></i>
       Retour à la liste
     </a>
-      {% if app.user == advert.author %}
+
+      {% if (app.user == advert.author) or (is_granted('ROLE_ADMIN')) %}
     <a href="{{ path('advert_edit', { 'id': advert.id }) }}" class="btn btn-default">
       <i class="glyphicon glyphicon-edit"></i>
       Modifier l'annonce
@@ -52,6 +53,7 @@
       {{ form_start(delete_form) }}
                 <input class="btn btn-danger" type="submit" value="Supprimer l'annonce" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette annonce ?');">
       {{ form_end(delete_form) }}
+
     {% endif %}
   </p>
 

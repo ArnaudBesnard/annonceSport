@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,13 +17,13 @@ class ValidType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('public', CheckboxType::class, array(
-                'label'    => 'Valider',
+            ->add('published', ChoiceType::class, array(
+                'label'    => 'Valider cette annonce',
                 'required' => false,
             ))
-            /*->add('save', ButtonType::class, array(
+            ->add('Valider', ButtonType::class, array(
                 'attr' => array('class' => 'save'),
-        ))*/;
+        ));
     }
 
     /**

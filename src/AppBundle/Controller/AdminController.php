@@ -8,13 +8,14 @@
 
 namespace AppBundle\Controller;
 use AppBundle\Entity\Advert;
+use AppBundle\Entity\Categories;
 use AppBundle\Entity\Departments;
 use Symfony\Bridge\Doctrine\Form\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 //use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -27,32 +28,22 @@ class AdminController extends controller
         $users = $em->getRepository('AppBundle:User')->findBy(
             array('enabled' => 1), // Critere
             array('id' => 'desc'),
-            5
+            10
         );
         return $this->render('admin/indexAdmin.html.twig', array(
             'users' => $users,
         ));
     }
 
-    public function validAdvertAction(Request $request)
+    public function showUnvalidAdvertAction()
     {
-    //A voir
         $em = $this->getDoctrine()->getManager();
         $advert = $em->getRepository('AppBundle:Advert')->findBy(
             array('published' => 0), // Critere
             array('postedAt' => 'desc')
         );
-        $validForm = $this->createForm('AppBundle\Form\ValidType');
-        $validForm->handleRequest($request);
-        if ($validForm->isSubmitted() && $validForm->isValid()) {
-            $advert->setPublished('1');
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('admin_index');
-        }
         return $this->render('admin/validAdvert.html.twig', array(
             'advert' => $advert,
-            'validForm' => $validForm->createView(),
         ));
     }
 
@@ -66,6 +57,30 @@ class AdminController extends controller
         $query = $queryBuilder->getQuery();
         $count = $query->getSingleScalarResult();
         return new Response($count);
+    }
+
+    public function viewCategoriesAction(Request $request)
+    {
+        $categories = new Categories();
+        $form = $this->createForm('AppBundle\Form\CategoriesType', $categories);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($categories);
+            $em->flush();
+            return $this->redirectToRoute('advert_categories');
+        }
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('AppBundle:Categories');
+        $listCategories = $repository->findBy(array(), array('category' => 'ASC'));
+        foreach ($listCategories as $category) {
+            return $this->render('advert/categories.html.twig', array(
+                'listCategories' => $listCategories,
+                'form' => $form->createView()
+            ));
+        }
     }
 
 }

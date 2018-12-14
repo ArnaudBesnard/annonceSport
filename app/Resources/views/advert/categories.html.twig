@@ -1,4 +1,9 @@
-    <ul>
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Liste des catégories actuelles</h2>
+    <hr />
+<ul>
         {% for category in listCategories %}
             <li>
                 <a href="{{ path('advByCat', { 'catName': category.category }) }}">{{ category.category }}</a>
@@ -7,3 +12,10 @@
             <li>Pas (encore !) de catégorie</li>
         {% endfor %}
     </ul>
+    <h2>Ajout d'une catégorie</h2>
+    <hr />
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input class="btn btn-primary" type="submit" value="Ajouter la catégorie" />
+    {{ form_end(form) }}
+{% endblock %}

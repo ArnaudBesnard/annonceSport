@@ -10,19 +10,13 @@
         <ul>
             {% for advert in advert %}
                 {% if advert.id is not null %}
-                    <div class="row">
-                        <div class="col-md-9">
 
-                            <h5>
-                                <li><a href="{{ path('advert_show', { 'id': advert.id }) }}"> {{ advert.title }}</a> -
-                                    <a href="{{ path('advert_show', { 'id': advert.id }) }}">Voir l'annonce</a></li>
-                            </h5>
-                            {{ form_start(validForm) }}
-                            {{ form_widget(validForm) }}
-                            <input class="btn btn-primary" type="submit" value="Valider l'annonce" />
-                            {{ form_end(validForm) }}
-                        </div>
-                    </div>
+                        <h5>
+                            <li><a href="{{ path('advert_show', { 'id': advert.id }) }}"> {{ advert.title }}</a> -
+                            <a href="{{ path('advert_show', { 'id': advert.id }) }}">Voir l'annonce</a></li>
+                        </h5>
+
+
                     <hr />
                 {% endif %}
             {% else %}

@@ -7,20 +7,22 @@
 
     <div class="validateAdverts">
         Il y a actuellement :<span style='color: red;'>{{ render(controller("AppBundle:Admin:countUnvalid")) }}</span>
-        annonces non validées
+        annonce(s) non validée(s)
     </div>
     <hr/>
-    <h2>Les 5 derniers membres enregistrés</h2>
+    <h2>Les 10 derniers membres enregistrés</h2>
     <div class="adminLastUsers">
         <div class="row">
-            <div class="col-md-3"><b>Nom d'utilisateur</b></div>
-            <div class="col-md-9"><b>Email</b></div>
+            <div class="col-md-4"><b>Nom d'utilisateur</b></div>
+            <div class="col-md-4"><b>Email</b></div>
+            <div class="col-md-4"><b>Statut (0 Non validé | 1 Validé)</b></div>
         </div>
         <hr/>
         <div class="row">
             {% for users in users %}
-                <div class="col-md-3">{{ users.username }}</div>
-                <div class="col-md-9">{{ users.email }}</div>
+                <div class="col-md-4">{{ users.username }}</div>
+                <div class="col-md-4">{{ users.email }}</div>
+                <div class="col-md-4">{{ users.enabled }}</div>
             {% endfor %}
         </div>
 

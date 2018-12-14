@@ -33,7 +33,7 @@ advert_show:
         _controller: AppBundle:Advert:show
 
 advert_edit:
-    path:    /admin/{id}/edit
+    path:    /{id}/edit
     defaults:
         _controller: AppBundle:Advert:edit
 
@@ -41,11 +41,6 @@ advByCat:
     path: /user/advByCat/{catName}
     defaults:
         _controller: AppBundle:Advert:advByCat
-
-advert_categories:
-    path: /categories
-    defaults:
-        _controller: AppBundle:Advert:viewCategorie
 
 advert_menu:
     path:    /menu
@@ -70,7 +65,17 @@ admin_index:
     defaults:
         _controller: AppBundle:Admin:indexAdmin
 
+show_advert_unvalid:
+    path: /admin/showUnvalidAdvert
+    defaults:
+        _controller: AppBundle:Admin:showUnvalidAdvert
+
 advert_valid:
     path: /admin/validAdvert
     defaults:
         _controller: AppBundle:Admin:validAdvert
+
+advert_categories:
+    path: admin/categories
+    defaults:
+        _controller: AppBundle:Admin:viewCategories

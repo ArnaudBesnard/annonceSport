@@ -1,6 +1,7 @@
 <?php
 namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Advert
  *
@@ -31,18 +32,40 @@ class Advert
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\Type("string")
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 25,
+     *      minMessage = "Le titre doit contenir au minimum {{ limit }} caractères",
+     *      maxMessage = "Le titre doit contenir au maximum {{ limit }} caractères"
+     * )
      */
     private $title;
     /**
      * @var string
      *
      * @ORM\Column(name="content", type="text")
+     * @Assert\Type("string")
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 500,
+     *      minMessage = "Le descriptif de l'annonce doit contenir au minimum {{ limit }} caractères",
+     *      maxMessage = "Le descriptif de l'annonce doit contenir au maximum {{ limit }} caractères"
+     * )
      */
     private $content;
     /**
      * @var int
      *
      * @ORM\Column(name="price", type="integer")
+     * @Assert\Type(
+     *     type="numeric",
+     *     message="la valeur du prix : {{ value }} n'est pas valide."
+     * )
+     * @Assert\Range(
+     *      min = 0,
+     *      minMessage = "La valeur du prix doit être supérieur ou égal à {{ limit }}",
+     * )
      */
     private $price;
     /**
@@ -52,7 +75,14 @@ class Advert
      */
     private $department;
     /**
-    * @ORM\Column(name="city", type="string", length=255)
+     * @ORM\Column(name="city", type="string", length=255)
+     * @Assert\Type("string")
+     * @Assert\Length(
+     *      min = 3,
+     *      max = 35,
+     *      minMessage = "La ville doit contenir au minimum {{ limit }} caractères",
+     *      maxMessage = "La ville doit contenir au maximum {{ limit }} caractères"
+     * )
     */
     private $city;
 
@@ -66,12 +96,20 @@ class Advert
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255)
+     * @Assert\Email(
+     *     message = "l'adresse '{{ value }}' n'est pas une adresse email valide.",
+     *     checkMX = true
+     * )
      */
     private $email;
     /**
      * @var string
      *
      * @ORM\Column(name="tel", type="string", length=255, nullable=true)
+     * @Assert\Type(
+     *     type="numeric",
+     *     message="le numero de téléphone : {{ value }} n'est pas valide."
+     * )
      */
     private $tel;
     /**
@@ -113,7 +151,6 @@ class Advert
     }
     /**
      * Get title
-     *
      * @return string
      */
     public function getTitle()
@@ -351,4 +388,6 @@ class Advert
     {
         return $this->image;
     }
+
+
 }
