@@ -2,7 +2,7 @@
 var objMap = {
     lat: parseFloat(document.getElementById('lat').innerHTML), //Latitude
     lng: parseFloat(document.getElementById('long').innerHTML), //Longitude
-    zoom: 12, //Niveau de zoom de la carte
+    zoom: parseFloat(document.getElementById('zoom').innerHTML), //Zoom
 
 
     //Initialisation de la Map

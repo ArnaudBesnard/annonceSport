@@ -7,10 +7,12 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use PUGX\AutocompleterBundle\Form\Type\AutocompleteType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -39,7 +41,13 @@ class AdvertType extends AbstractType
                 'label' => 'Choisissez votre département *',
                 'placeholder' => '...'
             ))
-            ->add('city',    TextType::class,array('label'=>'Votre ville * '))
+            ->add('city', AutocompleteType::class, ['class' => 'AppBundle:City'])
+            ->add('postalCode',    TextType::class,array(
+                'label'=>'Votre code postal * ',
+                /*'attr' => array(
+                    'readonly' => true,
+                ),*/
+            ))
             ->add('Tel', TextType::class,array(
                 'required' => false,
                 'label'=>'Votre téléphone (facultatif)'))
@@ -47,12 +55,10 @@ class AdvertType extends AbstractType
                 'label' => 'Ajouter une image (max 800*600)',
                 'required' => false
             ))
-
             ->add('published', CheckboxType::class, array(
-                'label'    => 'Valider cette annonce',
+                'label' => 'Valider cette annonce',
                 'required' => false,
             ));
-
     }
 
     /**

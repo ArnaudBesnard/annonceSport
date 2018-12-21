@@ -19,7 +19,7 @@
     </div>
     {{ form_end(form) }}
     </div>
-
+<hr />
     {% for advert in advert %}
         <div class="well">
         <div class="advert_container">
@@ -32,7 +32,7 @@
             </div>
             <div class="advert_column">
                 {% if advert.id is not null %}
-                    <a href="{{ path('advert_show', { 'id': advert.id }) }}"><h5> {{ advert.title }} </h5></a>
+                    <a href="{{ path('advert_show', { 'id': advert.id }) }}"><h5 id="advert_title"> {{ advert.title }} </h5></a>
                     <div class="advert_infos">Postée le {{ advert.postedAt|date('d/m/Y') }} à {{ advert.postedAt|date('H:i') }}</div>
                     <div class="advert_infos">Catégorie : {{ advert.category }} </div>
                     <div class="advert_infos">{{ advert.city }} - {{ advert.department }}</div>
@@ -44,8 +44,10 @@
         </div>
     </div>
         <hr />
+
     {% else %}
-        Aucune catégorie sélectionnée ou aucune annonce dans cette catégorie !
+        <br />
+        <div class="alert alert-danger">Désolé, aucune annonce ne correspond à vos critères</div>
     {% endfor %}
     <div class="center">{{ knp_pagination_render(advert) }}</div>
 {% endblock %}

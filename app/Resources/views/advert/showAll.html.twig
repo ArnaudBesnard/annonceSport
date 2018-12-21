@@ -20,6 +20,9 @@
                         <div class="advert_infos">Postée le {{ advert.postedAt|date('d/m/Y') }} à {{ advert.postedAt|date('H:i') }}</div>
                         <div class="advert_infos">Catégorie : <a href="{{ path('advByCat', { 'catName': advert.category }) }}">{{ advert.category }}</a> </div>
                         <div class="advert_infos">{{ advert.city }} - {{ advert.department }}</div>
+                        {% if advert.published == 0 %}
+                            <div class="advert_infos">Statut :  En cours de validation</div>
+                        {% endif %}
                         <br /><div class="advert_price">{{ advert.price }} €</div>
             {% else %}
                 Actuellement, il n'y a aucune annonce publiée!

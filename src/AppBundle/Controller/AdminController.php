@@ -22,7 +22,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AdminController extends controller
 {
-    public function indexAdminAction(Request $request)
+    public function indexAdminAction()
     {
         $em = $this->getDoctrine()->getManager();
         $users = $em->getRepository('AppBundle:User')->findBy(

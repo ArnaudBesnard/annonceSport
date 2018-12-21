@@ -32,7 +32,7 @@ class AdvertController extends Controller
                 ->setParameter('category', $cat)
             ->andWhere('a.title LIKE :title OR a.content LIKE :title')
                 ->setParameter('title', '%'.$title.'%')
-            ->andWhere('a.city = :city OR a.department LIKE :city')
+            ->andWhere('a.city LIKE :city OR a.department LIKE :city OR a.postalCode LIKE :city')
                 ->setParameter('city', $city);
         $query = $queryBuilder->getQuery();
         $adverts = $query->getResult();
@@ -41,6 +41,12 @@ class AdvertController extends Controller
             $adverts,
             $request->query->get('page', 1)/*le numéro de la page à afficher*/, 4/*nbre d'éléments par page*/
         );
+        if ($form->isSubmitted() && $form->isValid()) {
+            return $this->render('advert/search.html.twig', array(
+                'advert' => $advert,
+                'form' => $form->createView(),
+            ));
+        }
         return $this->render('advert/index.html.twig', array(
             'advert' => $advert,
             'form' => $form->createView(),
@@ -71,36 +77,6 @@ class AdvertController extends Controller
         );
         return $this->render('advert/showAll.html.twig', array(
             'advert' => $advert,
-        ));
-    }
-
-    public function searchAction(Request $request){
-        $form = $this->createForm('AppBundle\Form\SearchType');
-        $form->handleRequest($request);
-        $cat = $form['category']->getData();
-        $title = $form['title']->getData();
-        $city = $form['city']->getData();
-        $em = $this->getDoctrine()->getManager();
-        $queryBuilder = $em->createQueryBuilder();
-        $queryBuilder->select('a')
-            ->from(Advert::class, 'a')
-            ->Where('a.published = 1')
-            ->andWhere('a.category = :category')
-                ->setParameter('category', $cat)
-            ->andWhere('a.title LIKE :title OR a.content LIKE :title')
-                ->setParameter('title', '%'.$title.'%')
-            ->andWhere('a.city = :city OR a.department LIKE :city')
-                ->setParameter('city', $city);
-        $query = $queryBuilder->getQuery();
-        $adverts = $query->getResult();
-
-        $advert = $this->get('knp_paginator')->paginate(
-            $adverts,
-            $request->query->get('page', 1)/*le numéro de la page à afficher*/, 4/*nbre d'éléments par page*/
-        );
-        return $this->render('advert/search.html.twig', array(
-            'advert' => $advert,
-            'form' => $form->createView(),
         ));
     }
 
@@ -236,7 +212,5 @@ class AdvertController extends Controller
         $count = $query->getSingleScalarResult();
         return new Response($count);
     }
-
-
 
 }

@@ -20,7 +20,7 @@
         </div>
         {{ form_end(form) }}
     </div>
-    <hr/>
+
     {% for advert in advert %}
         <div class="well">
             <div class="advert_container">
@@ -36,7 +36,6 @@
                     {% endif %}
                 </div>
                 <div class="advert_column">
-                    {% if advert.id is not null %}
                         <a href="{{ path('advert_show', { 'id': advert.id }) }}"><h5> {{ advert.title }} </h5></a>
                         <div class="advert_infos">Postée le {{ advert.postedAt|date('d/m/Y') }}
                             à {{ advert.postedAt|date('H:i') }}</div>
@@ -44,16 +43,16 @@
                         <div class="advert_infos">{{ advert.city }} - {{ advert.department }}</div>
                         <br/>
                         <div class="advert_price">{{ advert.price }} €</div>
-                    {% else %}
-                        Actuellement, il n'y a aucune annonce publiée!
-                    {% endif %}
                 </div>
             </div>
         </div>
+    {% else %}
+        {# <div class="alert alert-danger">Désolé, aucune annonce ne correspond à vos critères B</div> #}
     {% endfor %}
+
     <div class="center">{{ knp_pagination_render(advert) }}</div>
     <hr/>
-    {% if advert is not null %}
-        {{ render(controller("AppBundle:Advert:indexBase")) }}
-    {% endif %}
+
+{{ render(controller("AppBundle:Advert:indexBase")) }}
+
 {% endblock %}

@@ -33,7 +33,7 @@ advert_show:
         _controller: AppBundle:Advert:show
 
 advert_edit:
-    path:    /{id}/edit
+    path:    /user/{id}/edit
     defaults:
         _controller: AppBundle:Advert:edit
 
@@ -53,7 +53,7 @@ advert_indexBase:
         _controller: AppBundle:Advert:menu
 
 advert_delete:
-    path: /admin/delete/{id}
+    path: /user/delete/{id}
     defaults:
         _controller: AppBundle:Advert:delete
         methods:  DELETE

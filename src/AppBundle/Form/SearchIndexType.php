@@ -39,7 +39,8 @@ class SearchIndexType extends AbstractType
                 )))
             ->add('city', TextType::class, array('label' => false,
                 'attr' => array(
-                    'placeholder' => 'Département, ville',
+                    'help' => 'Renseignez le département, la ville ou le code postal',
+                    'placeholder' => 'Localisation',
                 )));
         //->add('save', SubmitType::class);
     }

@@ -1,7 +1,32 @@
 {% extends 'base.html.twig' %} {% block body %}
 <h1>Editer une annonce</h1>
 
-{{ form_start(edit_form) }} {{ form_widget(edit_form) }}
+{{ form_start(edit_form) }}
+    {{form_errors(edit_form)}}
+    {{ form_row(edit_form.category) }}
+    {{ form_row(edit_form.Title) }}
+    {{ form_row(edit_form.Content) }}
+    {{ form_row(edit_form.Price) }}
+    {{ form_row(edit_form.department) }}
+    {{ form_row(edit_form.city) }}
+    {{ form_row(edit_form.postalCode) }}
+    {{ form_row(edit_form.Tel) }}
+    {{ form_row(edit_form.image) }}
+    {% if advert.image is not null %}
+        <img class="advert_img" src="{{ asset(advert.image.webPath) }}" alt="{{ advert.image.alt }}">
+    {% else %}
+        <img class="advert_display_img" src="{{ asset('public/images/aucune.jpg') }}" alt="Aucune image">
+    {% endif %}
+    <hr />
+    {% if (is_granted('ROLE_ADMIN')) %}
+        <hr/>
+        {{ form_row(edit_form.published) }}
+        <hr/>
+    {% else %}
+        <div class="published">
+            {{ form_row(edit_form.published) }}
+        </div>
+    {% endif %}
 <input class="btn btn-primary" type="submit" value="Editer l'annonce" /> {{ form_end(edit_form) }}
 <br /> {{ form_start(delete_form) }}
 <input class="btn btn-danger" type="submit" value="Delete"> {{ form_end(delete_form) }}

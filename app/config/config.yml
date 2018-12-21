@@ -10,6 +10,8 @@ parameters:
 
 framework:
     #esi: ~
+    templating:
+        engines: ['twig']
     translator: { fallbacks: ['%locale%'] }
     secret: '%secret%'
     router:
@@ -80,7 +82,7 @@ knp_paginator:
         pagination: '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig'
         sortable: '@KnpPaginator/Pagination/sortable_link.html.twig'
 
-# app/config/config.yml
+# FosUser Configuration
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
@@ -92,9 +94,8 @@ fos_user:
         sender_name: "%mailer_user%"
     registration:
         confirmation:
-            enabled: true
+            enabled: false
             from_email:
-                address: admin@annonceSport.fr
-                sender_name: Admin annonceSport.fr
+                address: admin@annoncesport.fr
+                sender_name: Arno de AnnonceSport.fr
             template: '@FOSUser/registration/email.txt.twig'
-
