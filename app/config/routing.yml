@@ -2,6 +2,11 @@
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
+mentions_legales:
+    path: /mentions-legales
+    defaults:
+        _controller: AppBundle:Advert:mentionsLegales
+
 advert_index:
     path:      /
     defaults:
