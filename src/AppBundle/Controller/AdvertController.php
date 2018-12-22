@@ -1,6 +1,7 @@
 <?php
 namespace AppBundle\Controller;
 use AppBundle\Entity\Advert;
+use AppBundle\Entity\City;
 use AppBundle\Entity\Categories;
 use AppBundle\Entity\Departments;
 use AppBundle\Entity\User;
@@ -212,5 +213,4 @@ class AdvertController extends Controller
         $count = $query->getSingleScalarResult();
         return new Response($count);
     }
-
 }

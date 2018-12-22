@@ -1,23 +1,14 @@
 <?php
 namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
-use AppBundle\Entity\Departments;
-use AppBundle\Entity\User;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use PUGX\AutocompleterBundle\Form\Type\AutocompleteType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\FormType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\FormEvent;
-use Symfony\Component\Form\FormEvents;
+
+
 class AdvertType extends AbstractType
 {
     /**
@@ -41,12 +32,14 @@ class AdvertType extends AbstractType
                 'label' => 'Choisissez votre département *',
                 'placeholder' => '...'
             ))
-            ->add('city', AutocompleteType::class, ['class' => 'AppBundle:City'])
+            ->add('city',    TextType::class,array(
+                'label'=>'Votre ville * ',
+            ))
             ->add('postalCode',    TextType::class,array(
-                'label'=>'Votre code postal * ',
-                /*'attr' => array(
+                'label'=>'Votre code postal ',
+                'attr' => array(
                     'readonly' => true,
-                ),*/
+                ),
             ))
             ->add('Tel', TextType::class,array(
                 'required' => false,

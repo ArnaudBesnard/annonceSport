@@ -9,6 +9,7 @@ var objMap = {
     initMap: function () {
         advertMap = new google.maps.Map(document.getElementById('advertMap'), {
             zoom: this.zoom,
+            zoomControl: false,
             center: {
                 lat: this.lat,
                 lng: this.lng
