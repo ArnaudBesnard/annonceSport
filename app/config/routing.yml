@@ -7,6 +7,10 @@ mentions_legales:
     defaults:
         _controller: AppBundle:Advert:mentionsLegales
 
+contact:
+    path:     /contact
+    defaults: { _controller: AppBundle:App:contact }
+
 advert_index:
     path:      /
     defaults:
