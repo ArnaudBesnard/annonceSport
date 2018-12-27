@@ -1,12 +1,12 @@
 <div class="menuAddAdvert"><a href="{{ path('advert_new') }}">Déposer une annonce</a></div>
 <div class="menu">
-    <h4><div class="titreMenu">Les annonces</div></h4>
+    <div class="titreMenu">Les annonces</div>
 <ul>
   <li><a href="{{ path('advert_showAll') }}"><i class="fas fa-eye"></i> Toutes les annonces</a></li>
   <li><a href="{{ path('advert_new') }}"><i class="fa fa-plus-circle"></i> Déposer une annonce</a></li>
 </ul>
     <hr />
-    <h4><div class="titreMenu">Mon compte</div></h4>
+    <div class="titreMenu">Mon compte</div>
 <ul>
     {% if app.user is not null %}
       <li><a href="{{ path('fos_user_security_logout') }}"><i style='font-size:18px' class='fa'>&#xf2f5;</i> Déconnexion</a></li>
@@ -20,7 +20,7 @@
 
     {% if app.user == "Administrateur" %}
         <hr />
-    <h4><div class="titreMenu">Administration</div></h4>
+    <div class="titreMenu">Administration</div>
 <ul>
     <li><a href="{{ path('admin_index') }}"><i class="fas fa-user-secret"></i> Tableau de bord</a></li>
     <li><a href="{{ path('show_advert_unvalid') }}"><i class="fas fa-bell"></i> Annonces en attente</a></li>

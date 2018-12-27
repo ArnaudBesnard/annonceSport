@@ -3,22 +3,24 @@
 
 {% block body %}
     <h1>Nous contacter</h1>
+    {% if app.session.flashBag.has('ajoute') %}
+        <div class="alert alert-fail">
+            {% for msg in app.session.flashBag.get('ajoute') %}
+                <div class="flash_msg">{{ msg }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
     <hr />
 {{ form_start(form) }}
 
 <div>
-    {{ form_row(form.subject) }}
-    {{ form_errors(form.subject) }}
-</div>
-    <br />
-<div>
-    {{ form_row(form.name) }}
-    {{ form_errors(form.name) }}
-</div>
-    <br />
-<div>
     {{ form_row(form.email) }}
     {{ form_errors(form.email) }}
+</div>
+    <br />
+<div>
+    {{ form_row(form.subject) }}
+    {{ form_errors(form.subject) }}
 </div>
     <br />
 <div>

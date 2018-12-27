@@ -58,14 +58,14 @@
       Modifier l'annonce
     </a>
       {{ form_start(delete_form) }}
-                <input class="btn btn-danger" type="submit" value="Supprimer l'annonce" onClick="sendMailUser()">
+                <input class="btn btn-danger" type="submit" value="Supprimer l'annonce" onclick="return(confirm('Etes-vous sûr de vouloir supprimer cette annonce ?'));"">
       {{ form_end(delete_form) }}
     {% endif %}
   </p>
   <script type="text/javascript">
       function sendMailUser() {
-          confirm("ëtes-vous sur de vouloir supprimer cette annonce ?");
-          if (is_granted('ROLE_ADMIN')){
+          return(confirm("ëtes-vous sur de vouloir supprimer cette annonce ?"));
+          if ((confirm) && (is_granted('ROLE_ADMIN'))){
               var motif = prompt("Raison de la suppression : ", "Texte par défaut");
               console.log(motif);
           }

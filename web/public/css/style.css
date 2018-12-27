@@ -49,6 +49,10 @@ a:hover{
 .published{
     display:none;
 }
+.flash_msg{
+    color: green;
+    text-align: center;
+}
 /*********************** HEADER ***********************/
 .bandeau{
     width:100%;
@@ -117,7 +121,8 @@ header ul a:hover{
     color: white;
     padding: 5px;
     width: 100%;
-    /*margin: auto;*/
+    font-size: 1.2em;
+    margin-bottom: 10px;
 }
 .menuAddAdvert{
     background-color: #5eb5e0;
@@ -195,6 +200,7 @@ header ul a:hover{
     padding-left: 15px;
     text-align: justify;
 }
+
 /*********************** MAP ***********************/
 #advertMap{
     width: 800px;
@@ -223,5 +229,9 @@ header ul a:hover{
     text-align: center;
 }
 
+/*********************** FOOTER ***********************/
 
-
+.footer_logo{
+    margin-left:50px;
+    margin-top:20px;
+}

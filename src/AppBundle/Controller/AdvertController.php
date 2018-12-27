@@ -213,8 +213,4 @@ class AdvertController extends Controller
         $count = $query->getSingleScalarResult();
         return new Response($count);
     }
-
-    public function mentionsLegalesAction(){
-        return $this->render('default/mentionsLegales.html.twig');
-    }
 }
