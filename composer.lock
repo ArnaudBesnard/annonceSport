@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "51a4d33b82888f184c20780ac827540e",
+    "content-hash": "16269007c1a5dd8316485f6c2c7093f3",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -1618,62 +1618,6 @@
             "time": "2017-10-23T01:57:42+00:00"
         },
         {
-            "name": "pugx/autocompleter-bundle",
-            "version": "v1.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/PUGX/PUGXAutoCompleterBundle.git",
-                "reference": "80b2b6ebbcf8ad21fc9860bf151bbb18b5a84595"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/PUGX/PUGXAutoCompleterBundle/zipball/80b2b6ebbcf8ad21fc9860bf151bbb18b5a84595",
-                "reference": "80b2b6ebbcf8ad21fc9860bf151bbb18b5a84595",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/orm": "~2.5",
-                "php": ">=5.5",
-                "symfony/form": "~2.7|~3.0",
-                "symfony/framework-bundle": "~2.7|~3.0"
-            },
-            "require-dev": {
-                "lexik/form-filter-bundle": ">=3.0",
-                "phpunit/phpunit": "4.*|5.*"
-            },
-            "suggest": {
-                "lexik/form-filter-bundle": "To use autocomplete on a filter."
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.4.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "PUGX\\AutocompleterBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL-3.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Massimiliano Arione",
-                    "email": "garakkio@gmail.com"
-                }
-            ],
-            "description": "Add an autocomplete type to forms",
-            "keywords": [
-                "field",
-                "form",
-                "symfony"
-            ],
-            "time": "2016-09-23T16:47:35+00:00"
-        },
-        {
             "name": "sensio/distribution-bundle",
             "version": "v5.0.24",
             "source": {
@@ -2573,16 +2517,16 @@
         },
         {
             "name": "twbs/bootstrap",
-            "version": "v4.1.3",
+            "version": "v4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "3b558734382ce58b51e5fc676453bfd53bba9201"
+                "reference": "9e4e94747bd698f4f61d48ed54c9c6d4d199bd32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/3b558734382ce58b51e5fc676453bfd53bba9201",
-                "reference": "3b558734382ce58b51e5fc676453bfd53bba9201",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/9e4e94747bd698f4f61d48ed54c9c6d4d199bd32",
+                "reference": "9e4e94747bd698f4f61d48ed54c9c6d4d199bd32",
                 "shasum": ""
             },
             "replace": {
@@ -2620,7 +2564,7 @@
                 "sass",
                 "web"
             ],
-            "time": "2018-07-24T15:54:34+00:00"
+            "time": "2018-12-21T18:55:28+00:00"
         },
         {
             "name": "twig/twig",

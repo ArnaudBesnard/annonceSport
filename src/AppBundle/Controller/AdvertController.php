@@ -153,21 +153,10 @@ class AdvertController extends Controller
 
     public function menuAction()
     {
-        $repository = $this
-            ->getDoctrine()
-            ->getManager()
-            ->getRepository('AppBundle:Advert');
-        $listAdverts = $repository->findAll();
-        foreach ($listAdverts as $advert) {
-            // $advert est une instance de Advert
-            //echo $advert->getContent();
-            return $this->render('advert/menu.html.twig', array(
-                // Tout l'intérêt est ici : le contrôleur passe
-                // les variables nécessaires au template !
-                'listAdverts' => $listAdverts
-            ));
-        }
+            return $this->render('advert/menu.html.twig'
+            );
     }
+
 
     public function advByCatAction(Request $request, $catName){
 

@@ -4,7 +4,7 @@
     {% for adverts in adverts %}
         <div class="well">
 
-            {% if adverts.id is not null %}
+            {% if adverts is not null %}
                 <a href="{{ path('advert_show', { 'id': adverts.id }) }}"><h4> {{ adverts.title }} </h4></a>
                 {% if adverts.image is not null %}
                     <a href="{{ path('advert_show', { 'id': adverts.id }) }}"><img class="advert_display_img" src="{{ asset(adverts.image.webPath) }}" alt="{{ adverts.image.alt }}"></a>
@@ -20,6 +20,6 @@
         </div>
 
     {% else %}
-        <li>Pas (encore !) d'annonces</li>
+        Actuellement, nous n'avons aucune annonce à vous proposer ! Postez en une !
     {% endfor %}
 </div>
