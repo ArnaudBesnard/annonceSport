@@ -64,12 +64,7 @@ class AppController extends Controller
             ->setBody($data["message"]);
 
         if (! $this->get('mailer')->send($message)) {
-            // Il y a eu un problème donc on traite l'erreur
             throw new Exception('Le mail n\'a pas pu être envoyé');
-        }
-        else {
-            $msg = 'envoi effectué avec succés 2' ;
-            return new Response($msg);
         }
     }
 }

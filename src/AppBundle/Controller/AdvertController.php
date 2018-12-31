@@ -92,6 +92,8 @@ class AdvertController extends Controller
             $advert->setEmail($this->getUser()->getEmail());
             $em->persist($advert);
             $em->flush();
+            $this->sendMailAdvertAction();
+            $this->sendMailAdminAction();
             return $this->redirectToRoute('advert_show', array('id' => $advert->getId()));
         }
         return $this->render('advert/new.html.twig', array(
@@ -201,5 +203,34 @@ class AdvertController extends Controller
         $query = $queryBuilder->getQuery();
         $count = $query->getSingleScalarResult();
         return new Response($count);
+    }
+
+    public function sendMailAdvertAction()
+    {
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Votre annonce sur annonceSport.fr')
+            ->setFrom('contact@annoncesport.fr')
+            ->setTo($this->getUser()->getEmail())
+            ->setContentType('text/html')
+            ->setBody('Votre annonce a bien été enregistrée, 
+            elle sera examinée et validée dans les plus brefs délais, merci et à bientôt sur annoncesport.fr');
+
+        if (! $this->get('mailer')->send($message)) {
+            throw new Exception('Le mail n\'a pas pu être envoyé');
+        }
+    }
+
+    public function sendMailAdminAction()
+    {
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Nouvelle annonce sur AnnonceSport')
+            ->setFrom('admin@annoncesport.fr')
+            ->setTo('admin@annoncesport.fr')
+            ->setContentType('text/html')
+            ->setBody('Nouvelle annonce publiée sur annonceSport, rendez-vous sur l\'administration pour valider cette annonce');
+
+        if (! $this->get('mailer')->send($message)) {
+            throw new Exception('Le mail n\'a pas pu être envoyé');
+        }
     }
 }
