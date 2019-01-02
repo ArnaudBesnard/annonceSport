@@ -94,6 +94,10 @@ class AdvertController extends Controller
             $em->flush();
             $this->sendMailAdvertAction();
             $this->sendMailAdminAction();
+            $request
+                ->getSession()
+                ->getFlashBag()
+                ->add('add', 'Votre annonce a bien été transmise, elle sera en ligne après validation ! Merci');
             return $this->redirectToRoute('advert_show', array('id' => $advert->getId()));
         }
         return $this->render('advert/new.html.twig', array(

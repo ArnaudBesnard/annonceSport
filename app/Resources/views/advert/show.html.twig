@@ -1,7 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
+    {% if app.session.flashBag.has('add') %}
+        <div class="alert alert-fail">
+            {% for msg in app.session.flashBag.get('add') %}
+                <div class="flash_msg">{{ msg }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
 <h1>{{ advert.title }}</h1>
   <div class="advert_author">Proposé par : {{ advert.author }} dans la Catégorie : <a href="{{ path('advByCat', { 'catName': advert.category }) }}">{{ advert.category }}</a></div>
 <hr />
