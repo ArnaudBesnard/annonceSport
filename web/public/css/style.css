@@ -76,7 +76,6 @@ header{
 #logo{
     width: 300px;
     height:47px;
-    padding-left: 20px;
 }
 /*********************** MENU ***********************/
 .menu{
@@ -120,7 +119,7 @@ header{
 .searchForm{
     background-color: lightgray;
     padding-top: 15px;
-    padding-bottom: 15px;
+    padding-bottom: 0px;
     padding-left: 15px;
     padding-right:15px;
 }
@@ -130,11 +129,8 @@ header{
 /*********************** ADVERTS ***********************/
 .advert_img{
     width:750px;
-    /*height:100%;*/
+    height:auto;
 }
-/*#advert_title{
-    padding-top: 10px;
-}*/
 .advert_infos{
     font-size: 12px;
 }
@@ -154,6 +150,7 @@ header{
     height:120px;
     width: 200px;
     margin: 0px 25px 10px 25px;
+    border:1px solid lightgrey;
 }
 .advert_container{
     display: flex;
@@ -204,10 +201,32 @@ header{
     margin-left:50px;
     margin-top:20px;
 }
-@media (max-width: 769px) { /* Remplacez 123px par la taille de votre choix */
+
+/**********************************************************/
+/************************RESPONSIVE************************/
+/**********************************************************/
+
+@media screen and (min-width: 320px) and (max-width: 1152px) {
     #logo{
         width: 200px;
         height: 31px;
         padding-left: 20px;
+    }
+    #menu{
+        display:none;
+    }
+    .footer_logo{
+        display:none;
+    }
+    #advertMap{
+        width: 100%;
+    }
+    .advert_img{
+        width:100%;
+    }
+    .advert_display_img{
+        width:100%;
+        height:auto;
+        margin:0;
     }
 }
