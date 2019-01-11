@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Edition Utilisateur</h1>
+
+    {{ form_start(edit_form) }}
+    {{ form_widget(edit_form) }}
+    <input type="submit" value="Confirmer" />
+    {{ form_end(edit_form) }}
+<br />
+    <ul>
+        <li>
+            <a href="{{ path('userManager') }}">Retour à la liste</a>
+        </li>
+
+    </ul>
+{% endblock %}

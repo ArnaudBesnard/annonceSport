@@ -37,7 +37,7 @@
                     {% endif %}
                 </div>
                 <div class="advert_column">
-                        <a href="{{ path('advert_show', { 'id': advert.id }) }}"><h5> {{ advert.title }} </h5></a>
+                        <a href="{{ path('advert_show', { 'id': advert.id }) }}"><h4> {{ advert.title }} </h4></a>
                         <div class="advert_infos">Postée le {{ advert.postedAt|date('d/m/Y') }}
                             à {{ advert.postedAt|date('H:i') }}</div>
                         <div class="advert_infos">Catégorie : {{ advert.category }} </div>

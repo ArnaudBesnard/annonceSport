@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Arno
- * Date: 06/12/2018
- * Time: 22:10
- */
 
 namespace AppBundle\Controller;
 use AppBundle\Entity\Advert;

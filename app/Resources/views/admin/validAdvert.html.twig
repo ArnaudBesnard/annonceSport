@@ -12,10 +12,6 @@
                 {% if advert.id is not null %}
                     <h5><a href="{{ path('advert_show', { 'id': advert.id }) }}"> {{ advert.title }}</a> -
                             <a href="{{ path('advert_show', { 'id': advert.id }) }}">Voir l'annonce</a></h5>
-
-
-
-
                     <hr />
                 {% endif %}
             {% else %}

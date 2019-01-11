@@ -1,4 +1,4 @@
-$("#cp").autocomplete({
+$("#appbundle_advert_postalCode").autocomplete({
     source: function (request, response) {
         $.ajax({
             url: "https://api-adresse.data.gouv.fr/search/?postcode="+$("input[name='appbundle_advert_postalCode']").val(),

@@ -99,3 +99,4 @@ fos_user:
                 address: admin@annoncesport.fr
                 sender_name: Arno de AnnonceSport.fr
             template: '@FOSUser/Registration/email.txt.twig'
+
