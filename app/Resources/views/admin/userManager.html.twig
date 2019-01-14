@@ -1,27 +1,26 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Liste des Utilisateurs</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Username</th>
-                <th>email</th>
-                <th>Roles</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
+<h1>Liste des Utilisateurs</h1>
+<br />
+<div class="adminLastUsers">
+        <div class="row">
+            <div class="col-md-3"><b>Nom d'utilisateur</b></div>
+            <div class="col-md-3"><b>Email</b></div>
+            <div class="col-md-3"><b>Rôle</b></div>
+            <div class="col-md-3"><b>Action</b></div>
+        </div>
+        <hr/>
+        <div class="row">
             {% for user in users %}
-                <tr>
-                    <td>{{ user.username }}</td>
-                    <td>{{ user.email }}</td>
-                    <td>{% for role in user.roles %}
+                <div class="col-md-3">{{ user.username }}</div>
+                <div class="col-md-3">{{ user.email }}</div>
+                <div class="col-md-3">
+                     {% for role in user.roles %}
                             {{ role }},
-                        {% endfor %}</td>
-                    <td><a href="{{ path('userEdit', { 'id': user.id }) }}">Editer</a></td>
-                </tr>
+                     {% endfor %}</div>
+                <div class="col-md-3"><a href="{{ path('userEdit', { 'id': user.id }) }}"><div class="edit_btn">Editer</div></a></div>
             {% endfor %}
-        </tbody>
-    </table>
+        </div>
+    </div>
 {% endblock %}

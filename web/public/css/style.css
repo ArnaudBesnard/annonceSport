@@ -50,6 +50,13 @@ a:hover{
     color: green;
     text-align: center;
 }
+
+#category{
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+    column-count: 2;   
+    list-style-type: square;
+}
 /*********************** HEADER ***********************/
 header{
     margin-bottom:85px;
@@ -94,6 +101,9 @@ header{
 .menuAddAdvert a:hover{
     color: white;
 }
+.listmenu{
+    margin-left: -10px;
+}
 /*********************** SEARCH ***********************/
 .search{
     width:80%;
@@ -118,6 +128,11 @@ header{
 }
 .advert_infos{
     font-size: 12px;
+    margin-left: 28px;
+}
+.advert_infos_all{
+    font-size:12px;
+    margin-left:0px;
 }
 .advert_price{
     font-size: 18px;
@@ -179,12 +194,22 @@ header{
 .footer-copyright{
     text-align: center;
 }
-
+.edit_btn{
+    text-align:center;
+    border-radius: 5px;
+    padding:3px;
+    margin-bottom:10px;
+    background-color:#3b80c5;
+    color:white;
+}
 /*********************** FOOTER ***********************/
 
-.footer_logo{
-    margin-left:50px;
-    margin-top:20px;
+#myFooter{
+    text-align: center;
+}
+#myFooter ul{
+    list-style: none;
+    text-align: left;
 }
 
 /**********************************************************/
@@ -214,6 +239,9 @@ header{
         width:100%;
         height:auto;
         margin:0;
+    }
+    .advert_container{
+        flex-direction: column;
     }
 }
 @media screen and (min-width: 767px) and (max-width: 1152px) {
@@ -254,5 +282,9 @@ header{
     }
     #advertMap{
         width: 100%;
+    }
+    .listmenu{
+        margin-left: -10px;
+        font-size: 10px;
     }
 }

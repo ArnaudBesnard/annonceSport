@@ -9,7 +9,7 @@
         </div>
     {% endif %}
 <h1>{{ advert.title }}</h1>
-  <div class="advert_author">Proposé par : {{ advert.author }} dans la Catégorie : <a href="{{ path('advByCat', { 'catName': advert.category }) }}">{{ advert.category }}</a></div>
+  <div class="advert_author">Proposé par : {{ advert.author }} le : {{ advert.postedAt | date("d/m/Y") }} à {{ advert.postedAt | date("H:i")  }} dans la Catégorie : <a href="{{ path('advByCat', { 'catName': advert.category }) }}">{{ advert.category }}</a></div>
 <hr />
 {# On vérifie qu'une image soit bien associée à l'annonce #}
 {% if advert.image is not null %}

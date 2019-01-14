@@ -16,18 +16,26 @@ contact:
     path:     /contact
     defaults:
         _controller: AppBundle:App:contact
+
 userManager:
     path: /userManager
     defaults:
         _controller: AppBundle:User:index
+
 userEdit:
     path: /userEdit/{id}
     defaults:
         _controller: AppBundle:User:edit
+        
 advert_index:
     path:      /
     defaults:
         _controller: AppBundle:Advert:index
+
+advertsByCategory:
+    path: /advertsByCategory
+    defaults:
+        _controller: AppBundle:Advert:advertsByCategory
 
 advert_showAll:
     path:    /showAll

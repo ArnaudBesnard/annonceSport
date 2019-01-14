@@ -17,11 +17,11 @@
                 <div class="advert_column">
                     {% if advert.id is not null %}
                 <a href="{{ path('advert_show', { 'id': advert.id }) }}"><h5> {{ advert.title }} </h5></a>
-                        <div class="advert_infos">Postée le {{ advert.postedAt|date('d/m/Y') }} à {{ advert.postedAt|date('H:i') }}</div>
-                        <div class="advert_infos">Catégorie : <a href="{{ path('advByCat', { 'catName': advert.category }) }}">{{ advert.category }}</a> </div>
-                        <div class="advert_infos">{{ advert.city }} - {{ advert.department }}</div>
+                        <div class="advert_infos_all">Postée le {{ advert.postedAt|date('d/m/Y') }} à {{ advert.postedAt|date('H:i') }}</div>
+                        <div class="advert_infos_all">Catégorie : <a href="{{ path('advByCat', { 'catName': advert.category }) }}">{{ advert.category }}</a> </div>
+                        <div class="advert_infos_all">{{ advert.city }} - {{ advert.department }}</div>
                         {% if advert.published == 0 %}
-                            <div class="advert_infos">Statut :  En cours de validation</div>
+                            <div class="advert_infos_all">Statut :  En cours de validation</div>
                         {% endif %}
                         <br /><div class="advert_price">{{ advert.price }} €</div>
             {% else %}
