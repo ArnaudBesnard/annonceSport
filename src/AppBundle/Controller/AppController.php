@@ -9,11 +9,13 @@ use Symfony\Component\HttpFoundation\Response;
 class AppController extends Controller
 {
 
-    public function mentionsLegalesAction(){
+    public function mentionsLegalesAction()
+    {
         return $this->render('default/mentionsLegales.html.twig');
     }
 
-    public function informationsAction(){
+    public function informationsAction()
+    {
         return $this->render('default/informations.html.twig');
     }
 
@@ -21,7 +23,7 @@ class AppController extends Controller
     {
         // Create the form according to the FormType created previously.
         // And give the proper parameters
-        $form = $this->createForm('AppBundle\Form\ContactType',null,array(
+        $form = $this->createForm('AppBundle\Form\ContactType', null, array(
             // To set the action use $this->generateUrl('route_identifier')
             'action' => $this->generateUrl('contact'),
             'method' => 'POST'
@@ -29,9 +31,9 @@ class AppController extends Controller
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
-            if($form->isValid()){
+            if ($form->isValid()) {
                 // Send mail
-                if($this->sendEmail($form->getData())){
+                if ($this->sendEmail($form->getData())) {
                     //FLASH MESSAGE FOR REDIRECTION
                     $request
                         ->getSession()
@@ -47,7 +49,8 @@ class AppController extends Controller
         ));
     }
 
-    private function sendEmail($data){
+    private function sendEmail($data)
+    {
 
         $message = \Swift_Message::newInstance()
             ->setSubject($data["subject"])
@@ -57,7 +60,7 @@ class AppController extends Controller
             ->setContentType('text/html')
             ->setBody($data["message"]);
 
-        if (! $this->get('mailer')->send($message)) {
+        if (!$this->get('mailer')->send($message)) {
             throw new Exception('Le mail n\'a pas pu être envoyé');
         }
     }

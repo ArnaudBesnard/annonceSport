@@ -8,74 +8,77 @@
             {% endfor %}
         </div>
     {% endif %}
-<h1>{{ advert.title }}</h1>
-  <div class="advert_author">Proposé par : {{ advert.author }} le : {{ advert.postedAt | date("d/m/Y") }} à {{ advert.postedAt | date("H:i")  }} dans la Catégorie : <a href="{{ path('advByCat', { 'catName': advert.category }) }}">{{ advert.category }}</a></div>
-<hr />
-{# On vérifie qu'une image soit bien associée à l'annonce #}
-{% if advert.image is not null %}
-  <img class="advert_img" src="{{ asset(advert.image.webPath) }}" alt="{{ advert.image.alt }}">
+    <h1>{{ advert.title }}</h1>
+    <div class="advert_author">Proposé par : {{ advert.author }} le : {{ advert.postedAt | date("d/m/Y") }}
+        à {{ advert.postedAt | date("H:i") }} dans la Catégorie : <a
+                href="{{ path('advByCat', { 'catName': advert.category }) }}">{{ advert.category }}</a></div>
+    <hr/>
+    {# On vérifie qu'une image soit bien associée à l'annonce #}
+    {% if advert.image is not null %}
+        <img class="advert_img" src="{{ asset(advert.image.webPath) }}" alt="{{ advert.image.alt }}">
     {% else %}
-      <img class="advert_display_img" src="{{ asset('public/images/aucune.jpg') }}" alt="Aucune image">
-{% endif %}
-
-  <div class="well">
-    <br />
-    <div class="advert_price">Prix : {{ advert.price }} €</div>
-    <hr />
-    <h2>Descriptif de l'annonce</h2>
-    {{ advert.content }}
-  </div>
-    <hr />
-    <div class="well">
-      <h2>Contacter le vendeur</h2>
-      <b>Vendeur :</b> {{ advert.author }}<br />
-      <b>Département :</b> {{ advert.department }}<br />
-      <b>Ville :</b> {{ advert.city }}<br />
-      <b>Adresse email :</b> {{ advert.email }}<br />
-        {% if advert.tel is not null %}
-      <b>Téléphone :</b> {{ advert.tel }}
-            {% else %}
-              <b>Téléphone :</b> Non renseigné
-        {% endif %}
-      <div class="localisation">
-          {% if city is empty %}
-          <b>Latitude : </b><span id="lat">46.52863</span><br />
-          <b>Longitude : </b><span id="long">2.43896</span><br />
-          <b>Zoom: </b><span id="zoom">4</span><br />
-        {% else %}
-          <b>Latitude : </b><span id="lat">{{ city.latitude }}</span><br />
-          <b>Longitude : </b><span id="long">{{ city.longitude }}</span><br />
-          <b>Zoom: </b><span id="zoom">12</span><br />
-
-        {% endif %}
-      </div>
-    </div>
-    <hr />
-    <h2>Localisation de l'objet :</h2>
-<div id="advertMap"></div>
-  <p>
-    <a href="{{ path('advert_index') }}" class="btn btn-default">
-      <i class="glyphicon glyphicon-chevron-left"></i>
-      Retour à la liste
-    </a>
-      {% if (app.user == advert.author) or (is_granted('ROLE_ADMIN')) %}
-    <a href="{{ path('advert_edit', { 'id': advert.id }) }}" class="btn btn-default">
-      <i class="glyphicon glyphicon-edit"></i>
-      Modifier l'annonce
-    </a>
-      {{ form_start(delete_form) }}
-                <input class="btn btn-danger" type="submit" value="Supprimer l'annonce" onclick="return(confirm('Etes-vous sûr de vouloir supprimer cette annonce ?'));"">
-      {{ form_end(delete_form) }}
+        <img class="advert_display_img" src="{{ asset('public/images/aucune.jpg') }}" alt="Aucune image">
     {% endif %}
-  </p>
-  <script type="text/javascript">
-      function sendMailUser() {
-          return(confirm("ëtes-vous sur de vouloir supprimer cette annonce ?"));
-          if ((confirm) && (is_granted('ROLE_ADMIN'))){
-              var motif = prompt("Raison de la suppression : ", "Texte par défaut");
-              console.log(motif);
-          }
-      }
-  </script>
+
+    <div class="well">
+        <br/>
+        <div class="advert_price">Prix : {{ advert.price }} €</div>
+        <hr/>
+        <h2>Descriptif de l'annonce</h2>
+        {{ advert.content }}
+    </div>
+    <hr/>
+    <div class="well">
+        <h2>Contacter le vendeur</h2>
+        <b>Vendeur :</b> {{ advert.author }}<br/>
+        <b>Département :</b> {{ advert.department }}<br/>
+        <b>Ville :</b> {{ advert.city }}<br/>
+        <b>Adresse email :</b> {{ advert.email }}<br/>
+        {% if advert.tel is not null %}
+            <b>Téléphone :</b> {{ advert.tel }}
+        {% else %}
+            <b>Téléphone :</b> Non renseigné
+        {% endif %}
+        <div class="localisation">
+            {% if city is empty %}
+                <b>Latitude : </b><span id="lat">46.52863</span><br/>
+                <b>Longitude : </b><span id="long">2.43896</span><br/>
+                <b>Zoom: </b><span id="zoom">4</span><br/>
+            {% else %}
+                <b>Latitude : </b><span id="lat">{{ city.latitude }}</span><br/>
+                <b>Longitude : </b><span id="long">{{ city.longitude }}</span><br/>
+                <b>Zoom: </b><span id="zoom">12</span><br/>
+
+            {% endif %}
+        </div>
+    </div>
+    <hr/>
+    <h2>Localisation de l'objet :</h2>
+    <div id="advertMap"></div>
+    <p>
+        <a href="{{ path('advert_index') }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à la liste
+        </a>
+        {% if (app.user == advert.author) or (is_granted('ROLE_ADMIN')) %}
+            <a href="{{ path('advert_edit', { 'id': advert.id }) }}" class="btn btn-default">
+                <i class="glyphicon glyphicon-edit"></i>
+                Modifier l'annonce
+            </a>
+            {{ form_start(delete_form) }}
+            <input class="btn btn-danger" type="submit" value="Supprimer l'annonce"
+                   onclick="return(confirm('Etes-vous sûr de vouloir supprimer cette annonce ?'));"">
+            {{ form_end(delete_form) }}
+        {% endif %}
+    </p>
+    <script type="text/javascript">
+        function sendMailUser() {
+            return (confirm("ëtes-vous sur de vouloir supprimer cette annonce ?"));
+            if ((confirm) && (is_granted('ROLE_ADMIN'))) {
+                var motif = prompt("Raison de la suppression : ", "Texte par défaut");
+                console.log(motif);
+            }
+        }
+    </script>
 
 {% endblock %}

@@ -1,7 +1,10 @@
 <?php
+
 namespace AppBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Advert
  *
@@ -12,9 +15,10 @@ class Advert
 {
     public function __construct()
     {
-        // Par défaut, la date de l'annonce est la date d'aujourd'hui
+        // La date de l'annonce est la date d'aujourd'hui
         $this->postedAt = new \Datetime();
     }
+
     /**
      * @var int
      *
@@ -83,7 +87,7 @@ class Advert
      *      minMessage = "La ville doit contenir au minimum {{ limit }} caractères",
      *      maxMessage = "La ville doit contenir au maximum {{ limit }} caractères"
      * )
-    */
+     */
     private $city;
     /**
      * @var string
@@ -133,6 +137,7 @@ class Advert
      * @ORM\Column(name="published", type="boolean")
      */
     private $published = false;
+
     /**
      * Get id
      *
@@ -142,6 +147,7 @@ class Advert
     {
         return $this->id;
     }
+
     /**
      * Set title
      *
@@ -154,6 +160,7 @@ class Advert
         $this->title = $title;
         return $this;
     }
+
     /**
      * Get title
      * @return string
@@ -162,6 +169,7 @@ class Advert
     {
         return $this->title;
     }
+
     /**
      * Set content
      *
@@ -174,6 +182,7 @@ class Advert
         $this->content = $content;
         return $this;
     }
+
     /**
      * Get content
      *
@@ -183,6 +192,7 @@ class Advert
     {
         return $this->content;
     }
+
     /**
      * Set price
      *
@@ -195,6 +205,7 @@ class Advert
         $this->price = $price;
         return $this;
     }
+
     /**
      * Get price
      *
@@ -204,6 +215,7 @@ class Advert
     {
         return $this->price;
     }
+
     /**
      * Set email
      *
@@ -216,6 +228,7 @@ class Advert
         $this->email = $email;
         return $this;
     }
+
     /**
      * Get email
      *
@@ -225,6 +238,7 @@ class Advert
     {
         return $this->email;
     }
+
     /**
      * Set postedAt
      *
@@ -237,6 +251,7 @@ class Advert
         $this->postedAt = $postedAt;
         return $this;
     }
+
     /**
      * Get postedAt
      *
@@ -246,6 +261,7 @@ class Advert
     {
         return $this->postedAt;
     }
+
     /**
      * Set published
      *
@@ -258,6 +274,7 @@ class Advert
         $this->published = $published;
         return $this;
     }
+
     /**
      * Get published
      *
@@ -267,6 +284,7 @@ class Advert
     {
         return $this->published;
     }
+
     /**
      * Set category
      *
@@ -279,6 +297,7 @@ class Advert
         $this->category = $category;
         return $this;
     }
+
     /**
      * Get category
      *
@@ -288,6 +307,7 @@ class Advert
     {
         return $this->category;
     }
+
     /**
      * Set author
      *
@@ -300,6 +320,7 @@ class Advert
         $this->author = $author;
         return $this;
     }
+
     /**
      * Get author
      *
@@ -309,6 +330,7 @@ class Advert
     {
         return $this->author;
     }
+
     /**
      * Set department
      *
@@ -321,6 +343,7 @@ class Advert
         $this->department = $department;
         return $this;
     }
+
     /**
      * Get department
      *
@@ -330,6 +353,7 @@ class Advert
     {
         return $this->department;
     }
+
     /**
      * Set city
      *
@@ -342,6 +366,7 @@ class Advert
         $this->city = $city;
         return $this;
     }
+
     /**
      * Get city
      *
@@ -351,6 +376,7 @@ class Advert
     {
         return $this->city;
     }
+
     /**
      * Set tel
      *
@@ -363,6 +389,7 @@ class Advert
         $this->tel = $tel;
         return $this;
     }
+
     /**
      * Get tel
      *
@@ -372,6 +399,7 @@ class Advert
     {
         return $this->tel;
     }
+
     /**
      * Set image
      *
@@ -384,6 +412,7 @@ class Advert
         $this->image = $image;
         return $this;
     }
+
     /**
      * Get image
      *

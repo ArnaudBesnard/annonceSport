@@ -68,7 +68,7 @@ advert_edit:
         _controller: AppBundle:Advert:edit
 
 advByCat:
-    path: /user/advByCat/{catName}
+    path: /advByCat/{catName}
     defaults:
         _controller: AppBundle:Advert:advByCat
 

@@ -1,36 +1,44 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<h2>Les annonces publiées sur le site</h2>
+    <h2>Les annonces publiées sur le site</h2>
     <h6>Il y a actuellement : {{ render(controller("AppBundle:Advert:countAdvert")) }} annonces sur le site</h6>
-    <hr />
+    <hr/>
     {% for advert in advert %}
         <div class="well">
             <div class="advert_container">
                 <div class="advert_column">
                     {% if advert.image is not null %}
-                        <a href="{{ path('advert_show', { 'id': advert.id }) }}"><img class="advert_display_img" src="{{ asset(advert.image.webPath) }}" alt="{{ advert.image.alt }}"></a>
+                        <a href="{{ path('advert_show', { 'id': advert.id }) }}"><img class="advert_display_img"
+                                                                                      src="{{ asset(advert.image.webPath) }}"
+                                                                                      alt="{{ advert.image.alt }}"></a>
                     {% else %}
-                        <a href="{{ path('advert_show', { 'id': advert.id }) }}"><img class="advert_display_img" src="{{ asset('public/images/aucune.jpg') }}" alt="Aucune image"></a>
+                        <a href="{{ path('advert_show', { 'id': advert.id }) }}"><img class="advert_display_img"
+                                                                                      src="{{ asset('public/images/aucune.jpg') }}"
+                                                                                      alt="Aucune image"></a>
                     {% endif %}
                 </div>
                 <div class="advert_column">
                     {% if advert.id is not null %}
-                <a href="{{ path('advert_show', { 'id': advert.id }) }}"><h5> {{ advert.title }} </h5></a>
-                        <div class="advert_infos_all">Postée le {{ advert.postedAt|date('d/m/Y') }} à {{ advert.postedAt|date('H:i') }}</div>
-                        <div class="advert_infos_all">Catégorie : <a href="{{ path('advByCat', { 'catName': advert.category }) }}">{{ advert.category }}</a> </div>
+                        <a href="{{ path('advert_show', { 'id': advert.id }) }}"><h5> {{ advert.title }} </h5></a>
+                        <div class="advert_infos_all">Postée le {{ advert.postedAt|date('d/m/Y') }}
+                            à {{ advert.postedAt|date('H:i') }}</div>
+                        <div class="advert_infos_all">Catégorie : <a
+                                    href="{{ path('advByCat', { 'catName': advert.category }) }}">{{ advert.category }}</a>
+                        </div>
                         <div class="advert_infos_all">{{ advert.city }} - {{ advert.department }}</div>
                         {% if advert.published == 0 %}
-                            <div class="advert_infos_all">Statut :  En cours de validation</div>
+                            <div class="advert_infos_all">Statut : En cours de validation</div>
                         {% endif %}
-                        <br /><div class="advert_price">{{ advert.price }} €</div>
-            {% else %}
-                Actuellement, il n'y a aucune annonce publiée!
-            {% endif %}
+                        <br/>
+                        <div class="advert_price">{{ advert.price }} €</div>
+                    {% else %}
+                        Actuellement, il n'y a aucune annonce publiée!
+                    {% endif %}
                 </div>
             </div>
         </div>
-        <hr />
+        <hr/>
     {% else %}
         <li>Pas (encore !) d'annonces dans cette catégorie</li>
     {% endfor %}

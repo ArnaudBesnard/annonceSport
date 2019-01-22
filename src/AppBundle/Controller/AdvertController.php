@@ -1,5 +1,7 @@
 <?php
+
 namespace AppBundle\Controller;
+
 use AppBundle\Entity\Advert;
 use AppBundle\Entity\City;
 use AppBundle\Entity\Categories;
@@ -30,11 +32,11 @@ class AdvertController extends Controller
             ->from(Advert::class, 'a')
             ->Where('a.published = 1')
             ->andWhere('a.category = :category')
-                ->setParameter('category', $cat)
+            ->setParameter('category', $cat)
             ->andWhere('a.title LIKE :title OR a.content LIKE :title')
-                ->setParameter('title', '%'.$title.'%')
+            ->setParameter('title', '%' . $title . '%')
             ->andWhere('a.city LIKE :city OR a.department LIKE :city OR a.postalCode LIKE :city')
-                ->setParameter('city', $city);
+            ->setParameter('city', $city);
         $query = $queryBuilder->getQuery();
         $adverts = $query->getResult();
 
@@ -53,7 +55,9 @@ class AdvertController extends Controller
             'form' => $form->createView(),
         ));
     }
-    public function indexBaseAction(){
+
+    public function indexBaseAction()
+    {
         $em = $this->getDoctrine()->getManager();
         $adverts = $em->getRepository('AppBundle:Advert')->findBy(
             array('published' => 1), // Critere
@@ -66,7 +70,8 @@ class AdvertController extends Controller
         ));
     }
 
-    public function showAllAction(Request $request){
+    public function showAllAction(Request $request)
+    {
         $em = $this->getDoctrine()->getManager();
         $adverts = $em->getRepository('AppBundle:Advert')->findBy(
             array('published' => 1), // Critere
@@ -148,23 +153,24 @@ class AdvertController extends Controller
         }
         return $this->redirectToRoute('advert_index');
     }
+
     private function createDeleteForm(Advert $advert)
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('advert_delete', array('id' => $advert->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-            ;
+            ->getForm();
     }
 
     public function menuAction()
     {
-            return $this->render('advert/menu.html.twig'
-            );
+        return $this->render('advert/menu.html.twig'
+        );
     }
 
 
-    public function advByCatAction(Request $request, $catName){
+    public function advByCatAction(Request $request, $catName)
+    {
 
         $em = $this->getDoctrine()->getManager();
         $cat = $em->getRepository('AppBundle:Categories')->findOneBy(['category' => $catName]);
@@ -181,7 +187,8 @@ class AdvertController extends Controller
         ));
     }
 
-    public function userAdvertsAction(request $request){
+    public function userAdvertsAction(request $request)
+    {
         $user = $this->getUser()->getUsername();
         $em = $this->getDoctrine()->getManager();
         $adverts = $em->getRepository('AppBundle:Advert')->findBy(
@@ -197,15 +204,24 @@ class AdvertController extends Controller
         ));
     }
 
-    public function countAdvertAction(){
+    public function advertsByCategoryAction()
+    {
+        $listCategories = $this
+            ->getDoctrine()
+            ->getRepository('AppBundle:Categories')
+            ->finAllCategories();
+        foreach ($listCategories as $category){
+            return $this->render('advert/advertsByCategory.html.twig', array(
+                'listCategories' => $listCategories,
+            ));
+        }
+    }
+
+    public function countAdvertAction()
+    {
         $em = $this->getDoctrine()->getManager();
-        $queryBuilder = $em->createQueryBuilder();
-        $queryBuilder->select('COUNT(a.id)')
-            ->from(Advert::class, 'a')
-            ->where('a.published = :published')
-            ->setParameter('published', 1);
-        $query = $queryBuilder->getQuery();
-        $count = $query->getSingleScalarResult();
+        $advertRepo = $em->getrepository('AppBundle:Advert');
+        $count = $advertRepo->findAllAdverts();
         return new Response($count);
     }
 
@@ -219,7 +235,7 @@ class AdvertController extends Controller
             ->setBody('Votre annonce a bien été enregistrée, 
             elle sera examinée et validée dans les plus brefs délais, merci et à bientôt sur annoncesport.fr');
 
-        if (! $this->get('mailer')->send($message)) {
+        if (!$this->get('mailer')->send($message)) {
             throw new Exception('Le mail n\'a pas pu être envoyé');
         }
     }
@@ -233,7 +249,7 @@ class AdvertController extends Controller
             ->setContentType('text/html')
             ->setBody('Nouvelle annonce publiée sur annonceSport, rendez-vous sur l\'administration pour valider cette annonce');
 
-        if (! $this->get('mailer')->send($message)) {
+        if (!$this->get('mailer')->send($message)) {
             throw new Exception('Le mail n\'a pas pu être envoyé');
         }
     }

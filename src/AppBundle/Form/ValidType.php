@@ -18,12 +18,12 @@ class ValidType extends AbstractType
     {
         $builder
             ->add('published', ChoiceType::class, array(
-                'label'    => 'Valider cette annonce',
+                'label' => 'Valider cette annonce',
                 'required' => false,
             ))
             ->add('Valider', ButtonType::class, array(
                 'attr' => array('class' => 'save'),
-        ));
+            ));
     }
 
     /**
@@ -35,6 +35,7 @@ class ValidType extends AbstractType
             'data_class' => 'AppBundle\Entity\Advert',
         ));
     }
+
     /**
      * {@inheritdoc}
      */

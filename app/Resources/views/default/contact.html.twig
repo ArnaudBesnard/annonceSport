@@ -10,31 +10,31 @@
             {% endfor %}
         </div>
     {% endif %}
-    <hr />
-{{ form_start(form) }}
+    <hr/>
+    {{ form_start(form) }}
 
-<div>
-    {{ form_row(form.email) }}
-    {{ form_errors(form.email) }}
-</div>
-    <br />
-<div>
-    {{ form_row(form.subject) }}
-    {{ form_errors(form.subject) }}
-</div>
-    <br />
-<div>
-    {{ form_row(form.message) }}
-    {{ form_errors(form.message) }}
-</div>
+    <div>
+        {{ form_row(form.email) }}
+        {{ form_errors(form.email) }}
+    </div>
+    <br/>
+    <div>
+        {{ form_row(form.subject) }}
+        {{ form_errors(form.subject) }}
+    </div>
+    <br/>
+    <div>
+        {{ form_row(form.message) }}
+        {{ form_errors(form.message) }}
+    </div>
 
-{# Render CSRF token etc .#}
-<div style="display:none">
-    {{ form_rest(form) }}
-</div>
-    <br />
-<input type="submit" value="Envoyer">
+    {# Render CSRF token etc .#}
+    <div style="display:none">
+        {{ form_rest(form) }}
+    </div>
+    <br/>
+    <input type="submit" value="Envoyer">
 
-{{ form_end(form) }}
+    {{ form_end(form) }}
 
 {% endblock %}

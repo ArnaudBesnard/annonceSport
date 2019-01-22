@@ -19,13 +19,13 @@ class SearchType extends AbstractType
     {
         $builder->add('category', EntityType::class, array(
             'class' => 'AppBundle:Categories',
-            'placeholder' =>'Catégorie',
+            'placeholder' => 'Catégorie',
             'label' => 'Catégorie',
             'choice_label' => 'category',
         ))
-            ->add('title', TextType::class,array('label' => 'Votre recherche',
+            ->add('title', TextType::class, array('label' => 'Votre recherche',
                 'required' => false))
-            ->add('city', TextType::class,array('label' => 'Localisation'));
+            ->add('city', TextType::class, array('label' => 'Localisation'));
     }
 
     /**

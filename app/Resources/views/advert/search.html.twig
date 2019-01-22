@@ -2,51 +2,58 @@
 
 {% block body %}
     <div class="searchForm">
-    {{ form_start(form) }}
-    <div class="row">
-        <div class="col-lg-4">
-            {{ form_row(form.category) }}
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col-lg-4">
+                {{ form_row(form.category) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_row(form.title) }}
+            </div>
+            <div class="col-lg-4">
+                {{ form_row(form.city) }}
+            </div>
         </div>
-        <div class="col-lg-4">
-            {{ form_row(form.title) }}
+        <div class="col-sm-12">
+            <center><input class="btn btn-primary" type="submit" value="Afficher les annonces"/></center>
         </div>
-        <div class="col-lg-4">
-            {{ form_row(form.city) }}
-        </div>
+        {{ form_end(form) }}
     </div>
-    <div class="col-sm-12">
-    <center><input class="btn btn-primary" type="submit" value="Afficher les annonces" /></center>
-    </div>
-    {{ form_end(form) }}
-    </div>
-<hr />
+    <hr/>
     {% for advert in advert %}
         <div class="well">
-        <div class="advert_container">
-            <div class="advert_column">
-                {% if advert.image is not null %}
-                    <a href="{{ path('advert_show', { 'id': advert.id }) }}"><img class="advert_display_img" src="{{ asset(advert.image.webPath) }}" alt="{{ advert.image.alt }}"></a>
-                {% else %}
-                    <a href="{{ path('advert_show', { 'id': advert.id }) }}"><img class="advert_display_img" src="{{ asset('public/images/aucune.jpg') }}" alt="Aucune image"></a>
-                {% endif %}
-            </div>
-            <div class="advert_column">
-                {% if advert.id is not null %}
-                    <a href="{{ path('advert_show', { 'id': advert.id }) }}"><h5 id="advert_title"> {{ advert.title }} </h5></a>
-                    <div class="advert_infos">Postée le {{ advert.postedAt|date('d/m/Y') }} à {{ advert.postedAt|date('H:i') }}</div>
-                    <div class="advert_infos">Catégorie : {{ advert.category }} </div>
-                    <div class="advert_infos">{{ advert.city }} - {{ advert.department }}</div>
-                    <br /><div class="advert_price">{{ advert.price }} €</div>
-                {% else %}
-                    Actuellement, il n'y a aucune annonce publiée!
-                {% endif %}
+            <div class="advert_container">
+                <div class="advert_column">
+                    {% if advert.image is not null %}
+                        <a href="{{ path('advert_show', { 'id': advert.id }) }}"><img class="advert_display_img"
+                                                                                      src="{{ asset(advert.image.webPath) }}"
+                                                                                      alt="{{ advert.image.alt }}"></a>
+                    {% else %}
+                        <a href="{{ path('advert_show', { 'id': advert.id }) }}"><img class="advert_display_img"
+                                                                                      src="{{ asset('public/images/aucune.jpg') }}"
+                                                                                      alt="Aucune image"></a>
+                    {% endif %}
+                </div>
+                <div class="advert_column">
+                    {% if advert.id is not null %}
+                        <a href="{{ path('advert_show', { 'id': advert.id }) }}"><h5
+                                    id="advert_title"> {{ advert.title }} </h5></a>
+                        <div class="advert_infos">Postée le {{ advert.postedAt|date('d/m/Y') }}
+                            à {{ advert.postedAt|date('H:i') }}</div>
+                        <div class="advert_infos">Catégorie : {{ advert.category }} </div>
+                        <div class="advert_infos">{{ advert.city }} - {{ advert.department }}</div>
+                        <br/>
+                        <div class="advert_price">{{ advert.price }} €</div>
+                    {% else %}
+                        Actuellement, il n'y a aucune annonce publiée!
+                    {% endif %}
+                </div>
             </div>
         </div>
-    </div>
-        <hr />
+        <hr/>
 
     {% else %}
-        <br />
+        <br/>
         <div class="alert alert-danger">Désolé, aucune annonce ne correspond à vos critères</div>
     {% endfor %}
     <div class="center">{{ knp_pagination_render(advert) }}</div>

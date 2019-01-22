@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Controller;
+
 use AppBundle\Entity\Advert;
 use AppBundle\Entity\Categories;
 use AppBundle\Entity\Departments;
@@ -41,7 +42,8 @@ class AdminController extends controller
         ));
     }
 
-    public function countUnvalidAction(){
+    public function countUnvalidAction()
+    {
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->createQueryBuilder();
         $queryBuilder->select('COUNT(a.id)')

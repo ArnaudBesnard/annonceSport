@@ -37,13 +37,13 @@
                     {% endif %}
                 </div>
                 <div class="advert_column">
-                        <a href="{{ path('advert_show', { 'id': advert.id }) }}"><h4> {{ advert.title }} </h4></a>
-                        <div class="advert_infos">Postée le {{ advert.postedAt|date('d/m/Y') }}
-                            à {{ advert.postedAt|date('H:i') }}</div>
-                        <div class="advert_infos">Catégorie : {{ advert.category }} </div>
-                        <div class="advert_infos">{{ advert.city }} - {{ advert.department }}</div>
-                        <br/>
-                        <div class="advert_price">{{ advert.price }} €</div>
+                    <a href="{{ path('advert_show', { 'id': advert.id }) }}"><h4> {{ advert.title }} </h4></a>
+                    <div class="advert_infos">Postée le {{ advert.postedAt|date('d/m/Y') }}
+                        à {{ advert.postedAt|date('H:i') }}</div>
+                    <div class="advert_infos">Catégorie : {{ advert.category }} </div>
+                    <div class="advert_infos">{{ advert.city }} - {{ advert.department }}</div>
+                    <br/>
+                    <div class="advert_price">{{ advert.price }} €</div>
                 </div>
             </div>
         </div>
@@ -54,6 +54,6 @@
     <div class="center">{{ knp_pagination_render(advert) }}</div>
     <hr/>
 
-{{ render(controller("AppBundle:Advert:indexBase")) }}
+    {{ render(controller("AppBundle:Advert:indexBase")) }}
 
 {% endblock %}

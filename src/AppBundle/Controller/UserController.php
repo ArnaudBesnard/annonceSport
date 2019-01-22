@@ -13,7 +13,7 @@ use AppBundle\Entity\User;
  */
 class UserController extends Controller
 {
-     /**
+    /**
      * Lists all Users.
      *
      */
@@ -25,6 +25,7 @@ class UserController extends Controller
             'users' => $users,
         ));
     }
+
     public function editAction(Request $request, User $id)
     {
 

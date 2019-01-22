@@ -5,14 +5,15 @@
     <h2>Les annonces en attente de validation</h2>
 
     <div class="validateAdverts">
-        Il y a actuellement :<span style = 'color: red;'>{{ render(controller("AppBundle:Admin:countUnvalid")) }}</span> annonce(s) non validée(s)
+        Il y a actuellement :<span style='color: red;'>{{ render(controller("AppBundle:Admin:countUnvalid")) }}</span>
+        annonce(s) non validée(s)
         <hr/>
         <ul>
             {% for advert in advert %}
                 {% if advert.id is not null %}
                     <h5><a href="{{ path('advert_show', { 'id': advert.id }) }}"> {{ advert.title }}</a> -
-                            <a href="{{ path('advert_show', { 'id': advert.id }) }}">Voir l'annonce</a></h5>
-                    <hr />
+                        <a href="{{ path('advert_show', { 'id': advert.id }) }}">Voir l'annonce</a></h5>
+                    <hr/>
                 {% endif %}
             {% else %}
                 <li>Aucune annonce en attente de validation</li>

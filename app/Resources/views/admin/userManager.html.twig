@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<h1>Liste des Utilisateurs</h1>
-<br />
-<div class="adminLastUsers">
+    <h1>Liste des Utilisateurs</h1>
+    <br/>
+    <div class="adminLastUsers">
         <div class="row">
             <div class="col-md-3"><b>Nom d'utilisateur</b></div>
             <div class="col-md-3"><b>Email</b></div>
@@ -16,10 +16,12 @@
                 <div class="col-md-3">{{ user.username }}</div>
                 <div class="col-md-3">{{ user.email }}</div>
                 <div class="col-md-3">
-                     {% for role in user.roles %}
-                            {{ role }},
-                     {% endfor %}</div>
-                <div class="col-md-3"><a href="{{ path('userEdit', { 'id': user.id }) }}"><div class="edit_btn">Editer</div></a></div>
+                    {% for role in user.roles %}
+                        {{ role }},
+                    {% endfor %}</div>
+                <div class="col-md-3"><a href="{{ path('userEdit', { 'id': user.id }) }}">
+                        <div class="edit_btn">Editer</div>
+                    </a></div>
             {% endfor %}
         </div>
     </div>

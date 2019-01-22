@@ -2,8 +2,8 @@
 
 {% block body %}
     <h2>Les catégories d'annonces</h2>
-    <hr />
-<ul id="category">
+    <hr/>
+    <ul id="category">
         {% for category in listCategories %}
             <li>
                 <a href="{{ path('advByCat', { 'catName': category.category }) }}">{{ category.category }}</a>
