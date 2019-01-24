@@ -8,11 +8,12 @@
             {% endfor %}
         </div>
     {% endif %}
+    {% if advert is not null and (advert.published == 1 or app.user == "Administrateur") %}
     <h1>{{ advert.title }}</h1>
     <div class="advert_author">Proposé par : {{ advert.author }} le : {{ advert.postedAt | date("d/m/Y") }}
         à {{ advert.postedAt | date("H:i") }} dans la Catégorie : <a
                 href="{{ path('advByCat', { 'catName': advert.category }) }}">{{ advert.category }}</a></div>
-    <hr/>
+<hr/>
     {# On vérifie qu'une image soit bien associée à l'annonce #}
     {% if advert.image is not null %}
         <img class="advert_img" src="{{ asset(advert.image.webPath) }}" alt="{{ advert.image.alt }}">
@@ -27,7 +28,7 @@
         <h2>Descriptif de l'annonce</h2>
         {{ advert.content }}
     </div>
-    <hr/>
+<hr/>
     <div class="well">
         <h2>Contacter le vendeur</h2>
         <b>Vendeur :</b> {{ advert.author }}<br/>
@@ -52,7 +53,7 @@
             {% endif %}
         </div>
     </div>
-    <hr/>
+<hr/>
     <h2>Localisation de l'objet :</h2>
     <div id="advertMap"></div>
     <p>
@@ -67,18 +68,12 @@
             </a>
             {{ form_start(delete_form) }}
             <input class="btn btn-danger" type="submit" value="Supprimer l'annonce"
-                   onclick="return(confirm('Etes-vous sûr de vouloir supprimer cette annonce ?'));"">
+                   onclick="return(confirm('Etes-vous sûr de vouloir supprimer cette annonce ?'));">
             {{ form_end(delete_form) }}
         {% endif %}
+        {% else %}
+            Cette annonce est inexistante !
+        {% endif %}
     </p>
-    <script type="text/javascript">
-        function sendMailUser() {
-            return (confirm("ëtes-vous sur de vouloir supprimer cette annonce ?"));
-            if ((confirm) && (is_granted('ROLE_ADMIN'))) {
-                var motif = prompt("Raison de la suppression : ", "Texte par défaut");
-                console.log(motif);
-            }
-        }
-    </script>
 
 {% endblock %}

@@ -2,7 +2,6 @@
 
 {% block body %}
     <h2>Les annonces publiées sur le site</h2>
-    <h6>Il y a actuellement : {{ render(controller("AppBundle:Advert:countAdvert")) }} annonces sur le site</h6>
     <hr/>
     {% for advert in advert %}
         <div class="well">

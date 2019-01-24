@@ -119,11 +119,11 @@ class AdvertController extends Controller
         $city = $em->getRepository('AppBundle:City')->findOneBy(
             array('realName' => $advertCity)
         );
-        return $this->render('advert/show.html.twig', array(
-            'advert' => $advert,
-            'city' => $city,
-            'delete_form' => $deleteForm->createView(),
-        ));
+            return $this->render('advert/show.html.twig', array(
+                'advert' => $advert,
+                'city' => $city,
+                'delete_form' => $deleteForm->createView(),
+            ));
     }
 
     public function editAction(Request $request, Advert $advert)
@@ -175,7 +175,7 @@ class AdvertController extends Controller
         $em = $this->getDoctrine()->getManager();
         $cat = $em->getRepository('AppBundle:Categories')->findOneBy(['category' => $catName]);
         $adverts = $em->getRepository('AppBundle:Advert')->findBy(
-            array('category' => $cat), // Critere
+            array('category' => $cat, 'published' => 1), // Critere
             array('postedAt' => 'desc') // Tri
         );
         $advert = $this->get('knp_paginator')->paginate(
