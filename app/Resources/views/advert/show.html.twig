@@ -8,7 +8,7 @@
             {% endfor %}
         </div>
     {% endif %}
-    {% if advert is not null and (advert.published == 1 or app.user == "Administrateur") %}
+    {% if advert is not null and (advert.published == 1 or app.user == ("Administrateur" or advert.user)) %}
     <h1>{{ advert.title }}</h1>
     <div class="advert_author">Proposé par : {{ advert.author }} le : {{ advert.postedAt | date("d/m/Y") }}
         à {{ advert.postedAt | date("H:i") }} dans la Catégorie : <a
